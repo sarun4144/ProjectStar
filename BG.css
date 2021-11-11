@@ -5,8 +5,6 @@ body,html{
   width: 100%;
   margin: 0;
   background: linear-gradient(to bottom, #090629 39%, #291c92 80%, #e95589 100%);
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .center{
@@ -188,4 +186,8 @@ h2 {
   bottom: -120vw;
   transform: rotateX(-100deg);  
   -webkit-mask-image: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,0) 80%);
+}
+
+.lockscreen{
+  overflow-y: hidden;
 }
