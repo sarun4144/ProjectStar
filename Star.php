@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="BG.css">
+    <link rel="stylesheet" href="footer.css">
     <link rel="stylesheet" href="Animation.css">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
@@ -16,20 +17,36 @@
     <link rel="icon" href="https://scontent.xx.fbcdn.net/v/t1.15752-9/s261x260/245799487_267531408630886_2729645764553798750_n.png?_nc_cat=111&ccb=1-5&_nc_sid=aee45a&_nc_ohc=SdR8eRCLh24AX8iffW2&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=5bcf13950dee4473d137c76a46870f42&oe=61911213">
 </head>
 <body>
-
-<?php include 'navbar.php';?>
-<div id="stars"></div>
-<div id="stars2"></div>
-<div id="stars3"></div>
-<div class="center">
-<div class="lines"></div>
-<h1>
-  <span>SpaceUtopia</span>
-  <span>SpaceUtopia</span>
-</h1>
-<h2 >Marketplace</h2>
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+  <div class="container">
+    <?php include 'navbar.php';?>
+    <div class="center">
+    <div class="lines"></div>
+    <h1>
+      <span>SpaceUtopia</span>
+      <span>SpaceUtopia</span>
+    </h1>
+  <h2 >Marketplace</h2>
 </div>
-<div class="Ani1"><img src="Cult.png" ></div>
+<div class="Ani1"><img src="https://github.com/sarun4144/ProjectStar/blob/Project/Cult.png?raw=true" ></div>
 <div id="cat"></div>
+<div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+            </ul>
+            <p class="copyright">Company Name © 2021</p>
+        </footer>
+    </div>
+
+
+</div>
+
+
 </body>
 </html>

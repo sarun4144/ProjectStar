@@ -2,15 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap");
 
-body,html{
-  height: 100%;
-  width: 100%;
-  margin: 0;
+body{
+  height: 155em;
   background: linear-gradient(to bottom, #090629 39%, #291c92 80%, #e95589 100%);
-  overflow-x: hidden; 
-  overflow-y: auto;
+  overflow-x: hidden;
 }
-
 .center{
   display: flex;
   align-items: center;
@@ -97,14 +93,6 @@ body,html{
     transform: translateY(-2000px);
   }
 }
-/* nav */
-a.White:visited {
-  color:#E95589;
-}
-a.White:hover{
-  color:#FFF;
-}
-
 .lines {
   position: fixed;
   width: 52vw;
@@ -121,6 +109,7 @@ a.White:hover{
   transform: translateY(-1em);
   left: 10;
 }
+
 h1 {
   position: fixed;
   font-family: "Exo";
@@ -178,4 +167,3 @@ h1 {
     text-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1;
     transform: rotate(-7deg);
   }
-

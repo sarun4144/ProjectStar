@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
 body,html{
     height: 100%;
     width: 100%;
@@ -102,7 +103,7 @@ body,html{
     color:#FFF;
   }
   h1 {
-    position: relative;
+    position: static;
     font-family: "Exo";
     font-size: 9em;
     margin-top: 0.12em;
@@ -150,7 +151,6 @@ body,html{
 
 * {
     box-sizing: border-box;
-    font-family: Lato,sans-serif;
   }
   .login {
     width: 350px;
@@ -161,6 +161,7 @@ body,html{
     place-content: center;
     margin: 30px auto;
     border-radius: 20px;
+    font-family: Lato,sans-serif;
   }
   .login-html {
     width: 100%;
@@ -256,12 +257,13 @@ body,html{
   }
   .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm{
       transform:rotate(0);
+      transition-delay: 0.3s;
   }
   .login-html .sign-up:checked + .tab + .login-form .sign-up-htm{
       transform:rotate(0);
+      transition-delay: 0.3s;
   }
   .foot-lnk{
       text-align:center;
     color: #E95589;
   }
-
