@@ -32,19 +32,7 @@
 </div>
 <div class="Ani1"><img src="https://github.com/sarun4144/ProjectStar/blob/Project/Cult.png?raw=true" ></div>
 <div id="cat"></div>
-<div class="footer-basic">
-        <footer>
-            <div class="social"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-            </ul>
-            <p class="copyright">Company Name © 2021</p>
-        </footer>
-    </div>
-
-
+    <?php include 'footer.html';?>
 </div>
 
 
