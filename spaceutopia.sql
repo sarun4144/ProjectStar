@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 03:38 PM
+-- Generation Time: Nov 12, 2021 at 03:43 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -60,7 +60,7 @@ CREATE TABLE `item` (
   `Cha` int(99) NOT NULL DEFAULT 0,
   `Agi` int(99) NOT NULL DEFAULT 0,
   `Tal` int(99) NOT NULL DEFAULT 0,
-  `Hold_or_Sale` enum('H','S') COLLATE utf8_unicode_ci NOT NULL,
+  `Hold_or_Sale` enum('H','S') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'H',
   `Category_Id` int(200) NOT NULL,
   `User_Id` int(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
