@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 04:18 PM
+-- Generation Time: Nov 12, 2021 at 04:37 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -97,6 +97,27 @@ CREATE TABLE `market` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rarity`
+--
+
+CREATE TABLE `rarity` (
+  `Rarity` int(200) NOT NULL,
+  `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `rarity`
+--
+
+INSERT INTO `rarity` (`Rarity`, `Name`) VALUES
+(1, 'Common'),
+(2, 'Rare'),
+(3, 'Epic'),
+(4, 'Legendary');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -146,6 +167,12 @@ ALTER TABLE `market`
   ADD PRIMARY KEY (`Id_Order`);
 
 --
+-- Indexes for table `rarity`
+--
+ALTER TABLE `rarity`
+  ADD PRIMARY KEY (`Rarity`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -178,6 +205,12 @@ ALTER TABLE `log`
 --
 ALTER TABLE `market`
   MODIFY `Id_Order` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `rarity`
+--
+ALTER TABLE `rarity`
+  MODIFY `Rarity` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
