@@ -6,7 +6,7 @@
  }
     $u = $_POST['Username'];
     $p = $_POST['pass'];
-    $conn = new PDO("mysql:host=localhost;dbname=spaceutopai;charset=utf8","root","");
+    $conn = new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
     $sql = "select * from user where Username = '$u' and Pass = sha1('$p') ";
     $result =  $conn -> query($sql);
     if($result -> rowCount() == 1){
