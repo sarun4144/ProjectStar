@@ -19,7 +19,8 @@
   <div id="stars"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-  <div class="container"><?php include 'navbar-login.php';?>
+  <div class="container">
+    <?php include 'navbar-login.php';?>
   <br><br>
           <?php 
             if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "error"){
