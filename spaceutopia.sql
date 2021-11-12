@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 12:09 PM
+-- Generation Time: Nov 12, 2021 at 02:49 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -28,9 +28,9 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `item` (
-  `Id_Item` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Name` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Item_Null',
-  `Category` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `Id_Item` int(11) NOT NULL,
+  `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Item_Null',
+  `Category` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Atk` int(99) NOT NULL DEFAULT 0,
   `Def` int(99) NOT NULL DEFAULT 0,
   `Int` int(99) NOT NULL DEFAULT 0,
@@ -79,8 +79,8 @@ CREATE TABLE `market` (
 
 CREATE TABLE `user` (
   `ID` int(200) NOT NULL,
-  `Username` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `Pass` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `Username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `Pass` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Email` text COLLATE utf8_unicode_ci NOT NULL,
   `role` enum('A','M') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'M',
   `Gem` double NOT NULL DEFAULT 0,
@@ -88,8 +88,21 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`ID`, `Username`, `Pass`, `Email`, `role`, `Gem`, `Img`) VALUES
+(1, 'sarun4144', 'a6d902cffba69e2dd5b168846c87932371d486dc', 'sarun4144@gmail.com', 'M', 0, NULL);
+
+--
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `item`
+--
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`Id_Item`);
 
 --
 -- Indexes for table `log`
@@ -114,6 +127,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `item`
+--
+ALTER TABLE `item`
+  MODIFY `Id_Item` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
@@ -129,7 +148,7 @@ ALTER TABLE `market`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
