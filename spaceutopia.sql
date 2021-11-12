@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 02:49 PM
+-- Generation Time: Nov 12, 2021 at 03:38 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -24,13 +24,35 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `catagory`
+--
+
+CREATE TABLE `catagory` (
+  `Id_Category` int(200) NOT NULL,
+  `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `catagory`
+--
+
+INSERT INTO `catagory` (`Id_Category`, `Name`) VALUES
+(1, 'Armor'),
+(2, 'Weapon'),
+(3, 'Vehicle '),
+(4, 'Accessories'),
+(5, 'Consumable'),
+(6, 'Crafting materials');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
 CREATE TABLE `item` (
-  `Id_Item` int(11) NOT NULL,
+  `Id_Item` int(200) NOT NULL,
   `Name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Item_Null',
-  `Category` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Atk` int(99) NOT NULL DEFAULT 0,
   `Def` int(99) NOT NULL DEFAULT 0,
   `Int` int(99) NOT NULL DEFAULT 0,
@@ -39,6 +61,7 @@ CREATE TABLE `item` (
   `Agi` int(99) NOT NULL DEFAULT 0,
   `Tal` int(99) NOT NULL DEFAULT 0,
   `Hold_or_Sale` enum('H','S') COLLATE utf8_unicode_ci NOT NULL,
+  `Category_Id` int(200) NOT NULL,
   `User_Id` int(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -99,6 +122,12 @@ INSERT INTO `user` (`ID`, `Username`, `Pass`, `Email`, `role`, `Gem`, `Img`) VAL
 --
 
 --
+-- Indexes for table `catagory`
+--
+ALTER TABLE `catagory`
+  ADD PRIMARY KEY (`Id_Category`);
+
+--
 -- Indexes for table `item`
 --
 ALTER TABLE `item`
@@ -127,10 +156,16 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `catagory`
+--
+ALTER TABLE `catagory`
+  MODIFY `Id_Category` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `Id_Item` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Item` int(200) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `log`
@@ -148,7 +183,7 @@ ALTER TABLE `market`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
