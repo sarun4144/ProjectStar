@@ -21,6 +21,16 @@
   <div id="stars3"></div>
   <div class="container"><?php include 'navbar-login.html';?>
   <br><br>
+      <?php 
+          if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "error"){
+              echo "<div class='alert alert-danger'>ชื่อบัญชีซ้ำหรือฐานข้อมูลปัญหา</div>";
+              unset($_SESSION["add_login"]);
+          }else if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "success"){
+              echo "<div class='alert alert-success'>เพิ่มบัญชีเรียบร้อยแล้ว</div>";
+              unset($_SESSION["add_login"]);
+          }
+                
+      ?>
   
     <div class="login">
         <div class="login-html">
@@ -31,14 +41,15 @@
               <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
               <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
               <div class="login-form">
+                <form action="verify.php" method="POST">
                 <div class="sign-in-htm">
                   <div class="group">
                     <label for="user" class="label">Username</label><br>
-                    <input id="user" type="text" class="input">
+                    <input id="user" type="text" class="input" name="Username">
                   </div>
                   <div class="group">
                     <label for="pass" class="label">Password</label><br>
-                    <input id="pass" type="password" class="input" data-type="password">
+                    <input id="pass" type="password" class="input" data-type="password" name="pass">
                   </div>
                   <div style="text-align: end; cursor: pointer">
                     <a href="#" class="White">Forgot Password?</a>
@@ -47,22 +58,24 @@
                     <input type="submit" class="button" value="Sign In">
                   </div>
                 </div>
+                </form>
+                <form action="registor_save.php" method="POST">
                 <div class="sign-up-htm">
                   <div class="group">
                     <label for="user-2" class="label">Username</label><br>
-                    <input id="user-2" type="text" class="input">
+                    <input id="user-2" type="text" class="input" name="Username" required>
                   </div>
                   <div class="group">
                     <label for="pass-2" class="label">Password</label><br>
-                    <input id="pass-2" type="password" class="input" data-type="password">
+                    <input id="pass-2" type="password" class="input" data-type="password" name="pass" required>
                   </div>
                   <div class="group">
                     <label for="con-pass-2" class="label">Confirm Password</label><br>
-                    <input id="con-pass-2" type="password" class="input" data-type="password">
+                    <input id="con-pass-2" type="password" class="input" data-type="password" name="pass-check" required>
                   </div>
                   <div class="group">
                     <label for="e-pass" class="label">Email Address</label><br>
-                    <input id="e-pass" type="text" class="input">
+                    <input id="e-pass" type="text" class="input" name="Email" required>
                   </div>
                   <div class="group">
                     <input type="submit" class="button" value="Sign Up">
@@ -71,6 +84,7 @@
                     <label for="tab-1" style="cursor: pointer;">Already Member?</a>
                   </div>
                 </div>
+                </form>
               </div>
         </div>
     </div>
