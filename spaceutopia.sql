@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2021 at 03:43 PM
+-- Generation Time: Nov 12, 2021 at 04:18 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -106,16 +106,16 @@ CREATE TABLE `user` (
   `Pass` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `Email` text COLLATE utf8_unicode_ci NOT NULL,
   `role` enum('A','M') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'M',
-  `Gem` double NOT NULL DEFAULT 0,
-  `Img` mediumblob DEFAULT NULL
+  `Gem` double NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `Username`, `Pass`, `Email`, `role`, `Gem`, `Img`) VALUES
-(1, 'sarun4144', 'a6d902cffba69e2dd5b168846c87932371d486dc', 'sarun4144@gmail.com', 'M', 0, NULL);
+INSERT INTO `user` (`ID`, `Username`, `Pass`, `Email`, `role`, `Gem`) VALUES
+(1, 'sarun4144', 'a6d902cffba69e2dd5b168846c87932371d486dc', 'sarun4144@gmail.com', 'M', 0),
+(3, 'Admin', '8dc9fa69ec51046b4472bb512e292d959edd2aef', 'sarun4144@gmail.com', 'A', 10000);
 
 --
 -- Indexes for dumped tables
@@ -183,7 +183,7 @@ ALTER TABLE `market`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
