@@ -64,7 +64,7 @@
                   </div>
                 </div>
                 </form>
-                <form action="registor_save.php" method="POST">
+                <form action="register_save.php" method="POST">
                 
                 <div class="sign-up-htm">
                   <div class="group">
