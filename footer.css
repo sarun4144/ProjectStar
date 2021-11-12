@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300");
 .footer-basic {
     padding:40px 0;
     color:#090629;
+    font-family: Lato,sans-serif;
   }
   
   .footer-basic ul {

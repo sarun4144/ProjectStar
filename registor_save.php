@@ -1,7 +1,7 @@
 <?php 
     session_start();
-    if(isset($_SESSION["username"]) && $_SESSION["id"]==session_id()){
-        header("location:index.php");
+    if(isset($_SESSION["Username"]) && $_SESSION["id"]==session_id()){
+        header("location:Star.php");
         die();
     }
     

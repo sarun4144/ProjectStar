@@ -19,19 +19,23 @@
   <div id="stars"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-  <div class="container"><?php include 'navbar-login.html';?>
+  <div class="container"><?php include 'navbar-login.php';?>
   <br><br>
-      <?php 
-          if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "error"){
-              echo "<div class='alert alert-danger'>ชื่อบัญชีซ้ำหรือฐานข้อมูลปัญหา</div>";
-              unset($_SESSION["add_login"]);
-          }else if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "success"){
-              echo "<div class='alert alert-success'>เพิ่มบัญชีเรียบร้อยแล้ว</div>";
-              unset($_SESSION["add_login"]);
-          }
-                
-      ?>
-  
+          <?php 
+            if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "error"){
+               echo "<div class='alert alert-danger'>ชื่อบัญชีซ้ำหรือฐานข้อมูลปัญหา</div>";
+               unset($_SESSION["add_login"]);
+            }else if(isset($_SESSION["add_login"]) && $_SESSION["add_login"] == "success"){
+               echo "<div class='alert alert-success'>เพิ่มบัญชีเรียบร้อยแล้ว</div>";
+               unset($_SESSION["add_login"]);
+            }
+          ?>
+          <?php 
+            if(isset($_SESSION["error"])){
+                echo "<div class='alert alert-danger'>ชื่อบัญชีหรือรหัสผ่านไม่ถูกต้อง</div>";
+                unset($_SESSION["error"]);
+            }
+          ?>
     <div class="login">
         <div class="login-html">
           <h1 class="display-5 ms-5">
@@ -60,6 +64,7 @@
                 </div>
                 </form>
                 <form action="registor_save.php" method="POST">
+                
                 <div class="sign-up-htm">
                   <div class="group">
                     <label for="user-2" class="label">Username</label><br>

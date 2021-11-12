@@ -23,7 +23,6 @@ a.White:hover{
           <li><a href="#" class="White nav-link px-2 fw-bolder" title="DashBoard"><i class="bi bi-window me-2"></i>Dashboard</a></li>
           <li><a href="#" class="White nav-link px-2 fw-bolder" title="Market"><i class="bi bi-shop-window me-2"></i>Market</a></li>
         </ul>
-        <?php echo $_SESSION["id"]?>
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         </form>
@@ -45,21 +44,19 @@ a.White:hover{
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         </form>
-        <a href="login.php">
-          <div div class="text-end">
-              <li class="nav-item">
-                    <div class="dropdown">
-                        <a  class="btn btn-outline-secondary dropdown-toggle btn-sm" type="button"
-                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-lines-fill"></i>&nbsp;<?php  echo $_SESSION["Username"]?>
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="logout.php"><i class="bi bi-power"></i> ออกจากระบบ</a></li>
-                        </ul>
-                    </div>
-              </li>
+        <div div class="text-end">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <div class="dropdown">
+                <button type="button" class="btn text-white fw-bold dropdown-toggle" style="background-color:#E95589" 
+                  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person-lines-fill"></i>&nbsp;<?php  echo $_SESSION["Username"]?></button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="logout.php"><i class="bi bi-power"></i> ออกจากระบบ</a></li>
+                  </ul>
+              </div>
+            </li>
+        </ul>
           </div>
-        </a>   
       </div>
       <?php 
         }

@@ -1,4 +1,9 @@
 <?php 
+ session_start();
+ if(isset($_SESSION["Username"]) && $_SESSION["id"]==session_id()){
+     header("location:Star.php");
+     die();
+ }
     $u = $_POST['Username'];
     $p = $_POST['pass'];
     $conn = new PDO("mysql:host=localhost;dbname=spaceutopai;charset=utf8","root","");
