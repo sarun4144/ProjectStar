@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 09:48 AM
+-- Generation Time: Nov 13, 2021 at 03:57 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -114,10 +114,7 @@ INSERT INTO `item` (`Id_Item`, `Name`, `Atk`, `Def`, `Int`, `Vit`, `Cha`, `Agi`,
 (52, 'Dual blade', 26, 5, 0, 5, 0, 11, 5, NULL, 'H', 2, 2, NULL),
 (53, 'Dual blade', 29, 7, 0, 7, 0, 14, 7, NULL, 'H', 2, 3, NULL),
 (54, 'Dual blade', 32, 9, 0, 9, 0, 17, 9, NULL, 'H', 2, 4, NULL),
-(55, 'Polarm', 37, 5, 0, 3, 0, 8, 4, NULL, 'H', 2, 1, NULL),
-(56, 'Polarm', 40, 7, 0, 6, 0, 10, 6, NULL, 'H', 0, 0, NULL),
-(57, 'Polarm', 43, 9, 0, 9, 0, 12, 8, NULL, 'H', 2, 3, NULL),
-(58, 'Polarm', 46, 11, 0, 12, 0, 14, 10, NULL, 'H', 2, 4, NULL),
+(55, 'Shotgun', 50, 12, 0, 0, 0, 7, 5, NULL, 'H', 2, 2, NULL),
 (59, 'Polarm', 37, 5, 0, 3, 0, 8, 4, NULL, 'H', 2, 1, NULL),
 (60, 'Polarm', 40, 7, 0, 6, 0, 10, 6, NULL, 'H', 2, 2, NULL),
 (61, 'Polarm', 43, 9, 0, 9, 0, 12, 8, NULL, 'H', 2, 3, NULL),
@@ -173,7 +170,44 @@ INSERT INTO `item` (`Id_Item`, `Name`, `Atk`, `Def`, `Int`, `Vit`, `Cha`, `Agi`,
 (119, 'Bandage', 0, 0, 0, 10, 0, 2, 0, NULL, 'H', 4, 1, NULL),
 (120, 'Bandage', 0, 0, 0, 15, 0, 4, 0, NULL, 'H', 4, 2, NULL),
 (121, 'Alcohol', 5, 0, 0, 0, 0, 18, 0, NULL, 'H', 4, 1, NULL),
-(122, 'Item_Null', 10, 0, 0, 0, 0, 25, 0, NULL, 'H', 4, 2, NULL);
+(122, 'Alcohol', 10, 0, 0, 0, 0, 25, 0, NULL, 'H', 4, 2, NULL),
+(123, 'Short sword', 34, 7, 0, 5, 0, 10, 5, NULL, 'H', 2, 2, NULL),
+(124, 'Ring Loyalist', 3, 0, 0, 3, 0, 0, 3, NULL, 'H', 3, 1, NULL),
+(125, 'Ring Loyalist', 5, 0, 0, 5, 0, 0, 5, NULL, 'H', 3, 2, NULL),
+(126, 'Ring Loyalist', 7, 0, 0, 7, 0, 0, 7, NULL, 'H', 3, 3, NULL),
+(127, 'Ring Loyalist', 9, 0, 0, 9, 0, 0, 9, NULL, 'H', 3, 4, NULL),
+(128, 'Neckless Loyalist', 8, 0, 0, 2, 0, 0, 2, NULL, 'H', 3, 1, NULL),
+(129, 'Neckless Loyalist', 10, 0, 0, 4, 0, 0, 4, NULL, 'H', 3, 2, NULL),
+(130, 'Neckless Loyalist', 12, 0, 0, 6, 0, 0, 6, NULL, 'H', 3, 3, NULL),
+(131, 'Neckless Loyalist', 14, 0, 0, 8, 0, 0, 8, NULL, 'H', 3, 4, NULL),
+(132, 'Belt Loyalist', 6, 0, 0, 4, 0, 0, 4, NULL, 'H', 3, 1, NULL),
+(133, 'Belt Loyalist', 8, 0, 0, 6, 0, 0, 6, NULL, 'H', 3, 2, NULL),
+(134, 'Belt Loyalist', 10, 0, 0, 8, 0, 0, 8, NULL, 'H', 3, 3, NULL),
+(135, 'Belt Loyalist', 12, 0, 0, 10, 0, 0, 10, NULL, 'H', 3, 4, NULL),
+(136, 'Face Lotalist', 6, 4, 0, 2, 0, 0, 0, NULL, 'H', 3, 1, NULL),
+(137, 'Face Lotalist', 8, 6, 0, 4, 0, 0, 0, NULL, 'H', 3, 2, NULL),
+(138, 'Face Lotalist', 10, 8, 0, 6, 0, 0, 0, NULL, 'H', 3, 3, NULL),
+(139, 'Face Lotalist', 12, 10, 0, 8, 0, 0, 0, NULL, 'H', 3, 4, NULL),
+(140, 'Ring Junker', 0, 3, 0, 3, 0, 2, 0, NULL, 'H', 3, 1, NULL),
+(141, 'Ring Junker', 0, 5, 0, 5, 0, 4, 0, NULL, 'H', 3, 2, NULL),
+(142, 'Ring Junker', 0, 7, 0, 7, 0, 6, 0, NULL, 'H', 3, 3, NULL),
+(143, 'Ring Junker', 0, 9, 0, 9, 0, 8, 0, NULL, 'H', 3, 4, NULL),
+(144, 'Bracer Junker', 0, 5, 0, 5, 0, 4, 3, NULL, 'H', 3, 1, NULL),
+(145, 'Bracer Junker', 0, 7, 0, 7, 0, 6, 5, NULL, 'H', 3, 2, NULL),
+(146, 'Bracer Junker', 0, 9, 0, 9, 0, 8, 7, NULL, 'H', 3, 3, NULL),
+(147, 'Bracer Junker', 11, 0, 0, 11, 0, 10, 9, NULL, 'H', 3, 4, NULL),
+(148, 'Neckless Junker', 0, 0, 0, 10, 0, 5, 0, NULL, 'H', 3, 1, NULL),
+(149, 'Neckless Junker', 0, 0, 0, 12, 0, 7, 0, NULL, 'H', 3, 2, NULL),
+(150, 'Neckless Junker', 0, 0, 0, 14, 0, 9, 0, NULL, 'H', 3, 3, NULL),
+(151, 'Neckless Junker', 0, 0, 0, 14, 0, 11, 0, NULL, 'H', 3, 4, NULL),
+(152, 'Belt Junker', 0, 0, 0, 8, 0, 4, 0, NULL, 'H', 3, 1, NULL),
+(153, 'Belt Junker', 0, 0, 0, 10, 0, 6, 0, NULL, 'H', 3, 2, NULL),
+(154, 'Belt Junker', 0, 0, 0, 12, 0, 8, 0, NULL, 'H', 3, 3, NULL),
+(155, 'Belt Junker', 0, 0, 0, 14, 0, 10, 0, NULL, 'H', 3, 4, NULL),
+(156, 'Face Junker', 0, 4, 0, 6, 0, 2, 0, NULL, 'H', 3, 1, NULL),
+(157, 'Face Junker', 0, 6, 0, 8, 0, 6, 0, NULL, 'H', 3, 2, NULL),
+(158, 'Face Junker', 0, 8, 0, 10, 0, 6, 0, NULL, 'H', 3, 3, NULL),
+(159, 'Face Junker', 0, 10, 0, 12, 0, 10, 0, NULL, 'H', 3, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -302,7 +336,7 @@ ALTER TABLE `catagory`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `Id_Item` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `Id_Item` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
 -- AUTO_INCREMENT for table `log`

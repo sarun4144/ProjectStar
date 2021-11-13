@@ -39,9 +39,10 @@
 </style>
 </head>
 <body>
-<div class="ms-4 me-4"> <?php include 'navbar.php';?></div>
-<button style="  border-radius: 70% " onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
-<div id="stars"></div>
+<div class="ms-4 me-4"> 
+  <?php include 'navbar.php';?>
+</div>
+<button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 <div id="stars2"></div>
 <div id="stars3"></div>
 <div class="center">
@@ -52,39 +53,87 @@
 </h1>
 <h2 >Marketplace</h2>
 </div>
-
-<div class="footer-basic" style="margin-top: 181em;">
-    <footer>
-        <div class="social"><a href="https://www.instagram.com/p/BrajjGLHcoR/" target="_blank"><i class="bi bi-instagram"></i></a>
-        <a href="https://twitter.com/FortniteGame" target="_blank"><i class="bi bi-twitter"></i></a>
-        <a href="https://www.facebook.com/photo/?fbid=2846872718675881&set=pob.100002255540078" target="_blank"><i class="bi bi-facebook"></i></a>
-        </div>
-        <ul class="list-inline">
-            <li class="list-inline-item"><a href="Star.php">Home</a></li>
-            <li class="list-inline-item"><a href="#">About</a></li>
-            <li class="list-inline-item"><a href="#">Terms</a></li>
-        </ul>
-        <p class="copyright">Space Utopia © 2021</p>
-    </footer>
+<div class="card" style="opacity: 0.8;background-color: #1C202C; width: 100%;height:30em; margin-top: 60em;"id="myP">
+  <div class="card-body"> 
+    <div class="Ani1"><img src="Cult.png" width="450px" id="myP">
+    
+  </div>
 </div>
-<script>
-//Get the button
-var mybutton = document.getElementById("myBtn");
+  </div>
+  
+  <div class="card" style="opacity: 0.8;background-color: #222736; width: 100%;height:30em;"id="myP2">
+  <div class="card-body"> 
+    <div class="Ani2"><img src="jedi.png" width="450px" id="myP2">
+    </div>
+    </div>
+  </div>
+  <div class="card" style="width: 100%;height:29em;"id="myP3">
+  <div class="card-body">
+    <div class="Ani4"><img src="Credit.png" width="350px" id="myP4" ">
+    </div>
+    <div class="Ani5"><img src="Iron.png" width="350px" id="myP5" ">
+    </div>
+     <div class="Ani3"><img src="Stone.png" width="800px" id="myP3" ">
+    </div>  
+    </div>
+  </div>
+  <div class="footer-basic" style="margin-top: 80em;">
+      <footer>
+          <div class="social"><a href="https://www.instagram.com/p/BrajjGLHcoR/" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="https://twitter.com/FortniteGame" target="_blank"><i class="bi bi-twitter"></i></a>
+          <a href="https://www.facebook.com/photo/?fbid=2846872718675881&set=pob.100002255540078" target="_blank"><i class="bi bi-facebook"></i></a>
+          </div>
+          <ul class="list-inline">
+              <li class="list-inline-item"><a href="Star.php">Home</a></li>
+              <li class="list-inline-item"><a href="#">About</a></li>
+              <li class="list-inline-item"><a href="#">Terms</a></li>
+          </ul>
+          <p class="copyright">Space Utopia © 2021</p>
+      </footer>
+  </div>
+</div>
 
-// When the user scrolls down 20px from the top of the document, show the button
+<script>
+var button = document.getElementById("myBtn");
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
-  if (document.body.scrollTop >= 20 || document.documentElement.scrollTop >= 20) {
-    mybutton.style.display = "block";
+  if (document.body.scrollTop > 30 || document.documentElement.scrollTop >30) {
+    button.style.display = "block";
   } else {
-    mybutton.style.display = "none";
+    button.style.display = "none";
+  }
+  if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+    document.getElementById("myP").className = "showup";
+  } else {
+    document.getElementById("myP").className = "";
+  }
+  if (document.body.scrollTop > 550 || document.documentElement.scrollTop > 550) {
+    document.getElementById("myP2").className = "showup2";
+  } else {
+    document.getElementById("myP2").className = "";
+  }
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+    document.getElementById("myP3").className = "showup3";
+  } else {
+    document.getElementById("myP3").className = "";
+  }
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+    document.getElementById("myP4").className = "showup4";
+  } else {
+    document.getElementById("myP4").className = "";
+  }
+  if (document.body.scrollTop > 1000 || document.documentElement.scrollTop > 1000) {
+    document.getElementById("myP5").className = "showup5";
+  } else {
+    document.getElementById("myP5").className = "";
   }
 }
-// When the user clicks on the button, scroll to the top of the document
 function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
 </script>
+
 </body>
 </html>

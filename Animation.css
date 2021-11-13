@@ -7,27 +7,139 @@
     animation-iteration-count: 2;
     animation-direction: alternate;  
     animation-iteration-count:infinite;
-    opacity: 0.4;
+    
   }
   @keyframes Cult {
-    0%   {left:0px; top:0px;}
-    25%  {left:200px; top:0px;}
-    50%  {left:200px; top:200px;}
-    75%  {left:0px; top:200px;}
-    100% {left:0px; top:0px;}
+    0%   {left:70%; bottom:40px;}
+    25%  {left:70%; bottom:10px;}
+    50%  {left:70%; bottom:35px;}
+    75%  {left:70%; bottom:10px;}
+    100% {left:70%; bottom:40px;}
   }
-  #cat {
-    width: 5000px;   /* Viewport-width */
-    height: 2000px;   /* Viewport-height */
-    margin: 2em auto;   /* Little margin */
-    background: transparent url('Cult.png')no-repeat;   /* Our sprite as the viewport background */
-    animation: catwalk 2s steps(50) infinite; /* The Animation */
+  .Ani2 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation-name: Jedi;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;  
+    animation-iteration-count:infinite;
+    
+  }
+  @keyframes Jedi {
+    0%   {left:8%; bottom:40px;}
+    25%  {left:8%; bottom:10px;}
+    50%  {left:8%; bottom:35px;}
+    75%  {left:8%; bottom:10px;}
+    100% {left:8%; bottom:40px;}
+  }
+
+  .Ani3 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation-name: Stone;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;  
+    animation-iteration-count:infinite;
+    
+  }
+  @keyframes Stone {
+    0%   {left:32%; bottom:320px;}
+    25%  {left:32%; bottom:280px;}
+    50%  {left:32%; bottom:310px;}
+    75%  {left:32%; bottom:280px;}
+    100% {left:32%; bottom:320px;}
   }
   
-  /* Animation keyframes for the sprite */
-  @keyframes catwalk {
-    50% { background-position: 0 -100px; }
-    50% { background-position: 100 -0px; }
+  .Ani4 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation-name: Credit;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;  
+    animation-iteration-count:infinite;
+    
   }
- 
+  @keyframes Credit {
+    0%   {left:53%; top: 230px;}
+    25%  {left:53%; top: 200px;}
+    50%  {left:53%; top: 225px;}
+    75%  {left:53%; top: 200px;}
+    100% {left:53%; top: 230px;}
+  }
+  .Ani5 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    animation-name: Iron;
+    animation-duration: 4s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;  
+    animation-iteration-count:infinite;
+    
+  }
+  @keyframes Iron {
+    0%   {left:33%; top:100px;}
+    25%  {left:33%; top:80px;}
+    50%  {left:33%; top:90px;}
+    75%  {left:33%; top:80px;}
+    100% {left:33%; top:100px;}
+  }
+
+  .showup{
+    animation-name: showup;
+    animation-duration: 2s;
+    visibility: visible;
+  }
+
+@keyframes showup {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(40%);
+  }
   
+  100% {
+    opacity: 0.95;
+    -webkit-transform: translateY(0%);
+  }
+}
+
+.showup2{
+  animation-name: showup;
+  animation-duration: 2s;
+  visibility: visible;
+}
+@keyframes showup2{
+0% {
+  opacity: 0;
+  -webkit-transform: translateY(50%);
+}
+
+100% {
+  opacity: 0.95;
+  -webkit-transform: translateY(0%);
+}
+}
+
+.showup3{
+  animation-name: showup;
+  animation-duration: 2s;
+  visibility: visible;
+}
+
+@keyframes showup3{
+0% {
+  opacity: 0;
+  -webkit-transform: translateY(50%);
+}
+
+100% {
+  opacity: 0.95;
+  -webkit-transform: translateY(0%);
+}
+}
