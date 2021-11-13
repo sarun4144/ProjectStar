@@ -16,6 +16,13 @@
     <link rel="stylesheet" href="footer.css">
 </head>
 <body>
+<?php 
+  session_start();
+  if(isset($_SESSION['Username'])){
+    header("location:Star.php");
+    die();
+  }
+?>
   <div id="stars"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
