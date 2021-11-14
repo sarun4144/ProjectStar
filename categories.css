@@ -6,7 +6,7 @@
 
 #sidebar{
   float:left;
-  background:#fff;
+  background: #2f3846;
   width:275px;  
   padding:0px 0 0 30px;
   height:100em;
@@ -16,7 +16,7 @@
 
 }
 #sidebar h3{
-  color:#262626;
+  color: whitesmoke;
   text-transform:uppercase;
   font-size:14px;
   padding:20px 0 10px 0;
@@ -47,7 +47,7 @@
   position:relative;  
 }
 .checklist li a{
-  color:#676a74;
+  color:whitesmoke;
   text-decoration:none; 
   -webkit-transition: all 300ms ease-out;
      -moz-transition: all 300ms ease-out;

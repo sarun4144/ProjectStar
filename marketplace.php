@@ -9,8 +9,10 @@
 <link rel="icon" href="https://scontent.xx.fbcdn.net/v/t1.15752-9/s261x260/245799487_267531408630886_2729645764553798750_n.png?_nc_cat=111&ccb=1-5&_nc_sid=aee45a&_nc_ohc=SdR8eRCLh24AX8iffW2&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=5bcf13950dee4473d137c76a46870f42&oe=61911213">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="categories.css">
+<link rel="stylesheet" href="Card1.css">
+<body style="background-color: #2f3846;">
+
 <div class="ms-3 me-3">
-    
     <?php 
     session_start();
     include 'navbar-login.php';?>
@@ -130,6 +132,67 @@
         </ul>
     </div>
 </div>
+<!-- market -->
+<div class="conatiner">
+            <span class="dropdown"> <!-- เรียงแบบไหน -->
+                <button class="btn btn-light dropdown-toggle btn-sm" type="button" 
+                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Lowest Number</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="LowestN">Lowest Number</a></li>
+                    <li><a class="dropdown-item" href="HighestN">Highest Number</a></li>
+                    <li><a class="dropdown-item" href="LowestP">Lowest Price</a></li>
+                    <li><a class="dropdown-item" href="HighestP">Highest Price</a></li>
+                </ul>
+                </span>
+
+                <span class="dropdown"> <!-- เอาแบบไหนบ้าง -->
+                    <button class="btn btn-light dropdown-toggle btn-sm" type="button" 
+                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">All</button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">All</a></li>
+                        <li><a class="dropdown-item" href="#">For sell</a></li>
+                        <li><a class="dropdown-item" href="#"> Not For sell</a></li>
+                    </ul>
+                    </span>
+
+        
+            <div class="wrap"> <!-- Layer1 -->
+            <?php
+
+                $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
+                $sql="SELECT * FROM item ";
+                $result =  $conn -> query($sql);
+
+                while($row=$result->fetch()){
+                    echo "<div class='box' style='background-color: #242736'>
+                    <div class='border-bottom'>
+                        <img src='Stone.png' alt='Item' style='width: 300px;'>
+                    </div>
+                    <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
+                    echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
+                    echo "</div>
+                            </div>";
+                    // if($row[13]==='0'){
+                    //     $sql="UPDATE item SET User_Id = '$_SESSION[UserID]' WHERE Id_Item = '$item_id'";
+                    //     $result=$conn->query($sql);
+                    //     $_SESSION["ItemSync"] = 1;
+                    //     header("location:Profile.php");
+                    //     die();
+                    // }
+                    // else{
+                    //     $_SESSION["ItemError"] = 1;
+                    //     header("location:Profile.php");
+                    //     die();
+                    // }
+                }
+                $conn=null;
+
+                ?>
+            </div>
+            </div>
+            
+</body>
+        <!-- end of market -->
     <script src="slider.js"></script>
     <script>
         function showDiv(Div) {
