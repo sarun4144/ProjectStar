@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    
+?>
 <!DOCTYPE html>
 <html lang="en" class="">
 <head>
@@ -7,7 +11,7 @@
     <link rel="stylesheet" href="BG.css">
     <link rel="stylesheet" href="Animation.css">
     <link rel="stylesheet" href="footer.css">
-    <link rel="stylesheet" href="Divandcard.css">
+    <link rel="stylesheet" href="Scrolldown.css">
     <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
@@ -53,31 +57,54 @@
 </h1>
 <h2 >Marketplace</h2>
 </div>
-<div class="card" style="opacity: 0.8;background-color: #1C202C; width: 100%;height:30em; margin-top: 60em;"id="myP">
+<div style="margin-top: 45em; margin-left: 60em;" id="Scroll" >
+  <div class="chevron"></div>
+  <div class="chevron"></div>
+  <div class="chevron"></div>
+  <span class="text">Scroll down</span>
+</div>
+<div class="card" style="opacity: 0.8;background-color: #1C202C; width: 100%;height:30em; margin-top: 15em;"id="myP">
   <div class="card-body"> 
-    <div class="Ani1"><img src="Cult.png" width="450px" id="myP">
-    
-  </div>
+    <div class="col-lg-11">
+      <span class="text2" style="margin-left: 10em; margin-top: 1.5em;">His palms are sweaty,knees weak,
+        <span  class="text2" style=" margin-top:1.2em;">There's vomit on his sweater already,</span>
+        <span  class="text2" style=" margin-top:1.2em;">Mom's spaghetti </span>
+        <span  class="text2" style=" margin-top:1.2em;">Marshall Mathers....</span>
+      </span>
+    </div>
+  <div class="col-lg-1"> 
+    <div class="Ani1" ><img src="Cult.png" width="450px" id="myP"> </div>
+  </div> 
 </div>
   </div>
-  
+
   <div class="card" style="opacity: 0.8;background-color: #222736; width: 100%;height:30em;"id="myP2">
-  <div class="card-body"> 
-    <div class="Ani2"><img src="jedi.png" width="450px" id="myP2">
-    </div>
+    <div class="card-body"> 
+      <div class="col-lg-0">  
+        <div class="Ani2"><img src="jedi.png" width="450px" id="myP2"></div>
+      </div>
+      <div class="col-lg-12">
+        <span class="text2" style="margin-left: 50em; margin-top: -2.5em;">Long time ago in galaxy far far 
+          <span  class="text2" style=" margin-top:1.2em;">away...We are wep dev kakkak</span>
+          <span  class="text3" style=" margin-top:1.2em;">Sarun Pungkrasae</span>
+          <span  class="text3" style=" margin-top:1.2em;">Therapong Boonthol</span>
+          <span  class="text3" style=" margin-top:1.2em;">Thanatron Therjuntuek</span>
+          <span  class="text3" style=" margin-top:1.2em;">Panusak Chophee</span>
+          <span  class="text2" style=" margin-top:1.2em;">They are Crime</span>
+        </span>  
+      </div>
     </div>
   </div>
-  <div class="card" style="width: 100%;height:29em;"id="myP3">
+
+  <div class="card" style="width: 100%;height:30em;"id="myP3">
   <div class="card-body">
-    <div class="Ani4"><img src="Credit.png" width="350px" id="myP4" ">
-    </div>
-    <div class="Ani5"><img src="Iron.png" width="350px" id="myP5" ">
-    </div>
-     <div class="Ani3"><img src="Stone.png" width="800px" id="myP3" ">
-    </div>  
+    <div class="Ani4"><img src="Credit.png" width="350px" id="myP4" "> </div>
+    <div class="Ani5"><img src="Iron.png" width="350px" id="myP5" "></div>
+     <div class="Ani3"><img src="Stone.png" width="800px" id="myP3" "> </div>  
     </div>
   </div>
-  <div class="footer-basic" style="margin-top: 80em;">
+
+  <div class="footer-basic" style="margin-top: 82em;">
       <footer>
           <div class="social"><a href="https://www.instagram.com/p/BrajjGLHcoR/" target="_blank"><i class="bi bi-instagram"></i></a>
           <a href="https://twitter.com/FortniteGame" target="_blank"><i class="bi bi-twitter"></i></a>
@@ -95,14 +122,20 @@
 
 <script>
 var button = document.getElementById("myBtn");
+var Scroll = document.getElementById("Scroll");
 window.onscroll = function() {scrollFunction()};
 function scrollFunction() {
-  if (document.body.scrollTop > 30 || document.documentElement.scrollTop >30) {
+  if (document.body.scrollTop > 25|| document.documentElement.scrollTop >25) {
     button.style.display = "block";
   } else {
     button.style.display = "none";
   }
-  if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+  if (document.body.scrollTop > 25|| document.documentElement.scrollTop >25) {
+    Scroll.style.visibility = "hidden";
+  } else {
+    Scroll.style.visibility = "visible";
+  }
+  if (document.body.scrollTop > 26 || document.documentElement.scrollTop > 26) {
     document.getElementById("myP").className = "showup";
   } else {
     document.getElementById("myP").className = "";

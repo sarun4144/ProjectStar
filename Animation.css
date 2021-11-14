@@ -1,3 +1,12 @@
+  @font-face {
+    font-family: "Aurek-Besh"; 
+    src: url("//db.onlinewebfonts.com/t/47be2b2cac26f996dfa1c885d7c9d53d.eot"); 
+    src: url("//db.onlinewebfonts.com/t/47be2b2cac26f996dfa1c885d7c9d53d.eot?#iefix") format("embedded-opentype"), 
+    url("//db.onlinewebfonts.com/t/47be2b2cac26f996dfa1c885d7c9d53d.woff2") format("woff2"),
+    url("//db.onlinewebfonts.com/t/47be2b2cac26f996dfa1c885d7c9d53d.woff") format("woff"), 
+    url("//db.onlinewebfonts.com/t/47be2b2cac26f996dfa1c885d7c9d53d.ttf") format("truetype"), 
+    url("//db.onlinewebfonts.com/t/47be2b2cac26f996dfa1c885d7c9d53d.svg#Aurek-Besh") format("svg"); 
+  }
 .Ani1 {
     width: 100px;
     height: 100px;
@@ -10,11 +19,11 @@
     
   }
   @keyframes Cult {
-    0%   {left:70%; bottom:40px;}
-    25%  {left:70%; bottom:10px;}
-    50%  {left:70%; bottom:35px;}
-    75%  {left:70%; bottom:10px;}
-    100% {left:70%; bottom:40px;}
+    0%   {left:80em; bottom:16em;}
+    25%  {left:80em; bottom:12em ;}
+    50%  {left:80em; bottom:14em;}
+    75%  {left:80em; bottom:12em;}
+    100% {left:80em ;bottom:16em;}
   }
   .Ani2 {
     width: 100px;
@@ -28,11 +37,11 @@
     
   }
   @keyframes Jedi {
-    0%   {left:8%; bottom:40px;}
-    25%  {left:8%; bottom:10px;}
-    50%  {left:8%; bottom:35px;}
-    75%  {left:8%; bottom:10px;}
-    100% {left:8%; bottom:40px;}
+    0%   {left:8%; bottom:4em;}
+    25%  {left:8%; bottom:0em;}
+    50%  {left:8%; bottom:2em;}
+    75%  {left:8%; bottom:0em;}
+    100% {left:8%; bottom:4em;}
   }
 
   .Ani3 {
@@ -142,4 +151,20 @@
   opacity: 0.95;
   -webkit-transform: translateY(0%);
 }
+}
+.text2 {
+  display: block;
+  font-family:"Aurek-Besh";
+  font-size:20px;
+  text-transform:none;
+  color:#be96f3;
+  text-shadow: 0 0 0.3em #a9bfec, 0 0 0.2em black, 0 0 6em #165ff3;
+}
+.text3 {
+  display: block;
+  font-family:"Aurek-Besh";
+  font-size:20px;
+  text-transform:none;
+  color:#f39696;
+  text-shadow: 0 0 0.3em #a9bfec, 0 0 0.2em black, 0 0 6em #165ff3;
 }
