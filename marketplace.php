@@ -10,14 +10,14 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="categories.css">
 <link rel="stylesheet" href="Card1.css">
-<body style="background-color: #2f3846;">
+<body style="background-color: #222;">
 
 <div class="ms-3 me-3">
     <?php 
     session_start();
     include 'navbar-login.php';?>
 </div>
-<hr>
+<hr style="background-color: #fff;">
 <div id="sidebar" class="sider sticky-top">
     <h3>CATEGORIES</h3>
     <div class="checklist categories">
@@ -134,6 +134,7 @@
 </div>
 <!-- market -->
 <div class="conatiner">
+            <div></div>
             <span class="dropdown"> <!-- เรียงแบบไหน -->
                 <button class="btn btn-light dropdown-toggle btn-sm" type="button" 
                  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Lowest Number</button>
@@ -143,17 +144,17 @@
                     <li><a class="dropdown-item" href="LowestP">Lowest Price</a></li>
                     <li><a class="dropdown-item" href="HighestP">Highest Price</a></li>
                 </ul>
-                </span>
+            </span>
 
-                <span class="dropdown"> <!-- เอาแบบไหนบ้าง -->
-                    <button class="btn btn-light dropdown-toggle btn-sm" type="button" 
-                     id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">All</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">All</a></li>
-                        <li><a class="dropdown-item" href="#">For sell</a></li>
-                        <li><a class="dropdown-item" href="#"> Not For sell</a></li>
-                    </ul>
-                    </span>
+            <span class="dropdown"> <!-- เอาแบบไหนบ้าง -->
+                <button class="btn btn-light dropdown-toggle btn-sm" type="button" 
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">All</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">All</a></li>
+                    <li><a class="dropdown-item" href="#">For sell</a></li>
+                    <li><a class="dropdown-item" href="#"> Not For sell</a></li>
+                </ul>
+            </span>
 
         
             <div class="wrap"> <!-- Layer1 -->
