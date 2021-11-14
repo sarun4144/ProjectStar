@@ -1,4 +1,10 @@
-
+<?php
+    session_start();
+    if(!isset($_SESSION["Username"])){
+        header("location:login.php");
+        die();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,6 +102,16 @@ button{
                 unset($_SESSION["ItemError"]);
             }
           ?>
+          <?php 
+            if(isset($_SESSION["ItemSell"])){
+                echo "<script>alert('Item Sell!');</script>";
+                unset($_SESSION["ItemSell"]);
+            }
+            if(isset($_SESSION["SellError"])){
+                echo "<script>alert('Can't sell not own Item!');</script>";
+                unset($_SESSION["SellError"]);
+            }
+          ?>
 
       <div class="gradient-border mt-5 ">
         <table class="center">  
@@ -147,57 +163,80 @@ button{
                                     <button class="btn text-white fw-bold" type="submit" style="background-color:#E95589">Claim</button>
                                 </form>
                             </div>
+                            </div>
                         </div>
-                    </div>
-                    
-            </div>       
+                    </div>  
+                    <div class="modal fade" id="cancel">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header">
+                                    <h5 class="modal-title ">Cancel Item Sell</h5>
+                                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                            <div class="modal-body">
+                                
+                                    <div class="form-group">
+                                        <label>Are you sure to CANCEL selling this Item</label>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                    <button class="btn btn-danger text-white fw-bold" type="submit"">Yes</button>
+                                    <button class="btn btn-secondary text-white fw-bold" type="submit" data-bs-dismiss="modal">Close</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>      
         </div>
         
         <hr class="new1">
         <!-- item-->
+        <div class="text-end">
+            <button class=" btn btn-danger text-white fw-bold me-2 mt-2" data-bs-target="#sell" data-bs-toggle="modal">Sell</button></div> 
+                    <div class="modal fade" id="sell">
+                        <div class="modal-dialog">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header">
+                                    <h5 class="modal-title ">Sell Item</h5>
+                                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                            <div class="modal-body">
+                                <form method="POST" action="sellitem.php">
+                                    <div class="form-group">
+                                        <label>ID Item</label>
+                                        <input type="text" name="item_id" class="form-control mt-2 required">
+                                        <label class="mt-3">Price (Gem)</label>
+                                        <input type="text" name="price_gem" class="form-control mt-2 required">
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                                    <button class="btn btn-danger text-white fw-bold" type="submit" >Sell</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
         <div class="wrap"> <!-- Layer1 -->
-                
+                                
+        
                     <?php
-
+                        
                         $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
                         $sql="SELECT * FROM item WHERE User_Id = $_SESSION[UserID] ";
                         $result =  $conn -> query($sql);
                         
                         while($row=$result->fetch()){
+                            $hos=$row[10];
                             echo "<div class='box' style='background-color: #242736'>
                             <div class='border-bottom'>
-                                <img src='Turnip Hot butt.png' alt='Item' style='width: 200px;'>
+                                <img src='Stone.png' alt='Item' style='width: 300px;'>
                             </div>
                             <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
-                            echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<br> ATK - ".$row[2]." DEF - ".$row[3]." INT - ".$row[4]." VIT - ".$row[5]."<br> CHA - ".$row[6]." AGI - ".$row[7]." TAL - ".$row[8];
-                            echo "</div>
-                            <div class='text-start'>
-                                <button class='btn btn-danger ms-2 mt-2 me-2 text-white fw-bold' '  data-bs-target='#sell' data-bs-toggle='modal'>Sell</button>
+                            echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div class='mt-2' style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
+                            if($hos==='S'){
                                 
-                                <div class='modal fade' id='sell'>
-                                    <div class='modal-dialog'>
-                                        <div class='modal-content bg-dark'>
-                                            <div class='modal-header'>
-                                                <h5 class='modal-title '>Sell Item</h5>
-                                                <button class='btn-close' data-bs-dismiss='modal'></button>
-                                            </div>
-                                            <div class='modal-body'>
-                                                <form>
-                                                    <div class='form-group'>
-                                                        <label class='h1'>Item_Name</label> <br>
-                                                        <label class='mt-3'>Price (Gem)</label>
-                                                        <input type='text' class='form-control mt-2'>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        <div class='modal-footer'>
-                                            <button class=' btn btn-danger text-white fw-bold'>Sell</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
-                            </div>   
-                        </div>";
+                                echo "<div class='text-end me-2'><button class='btn btn-danger text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>Cancel</button></div>";
+                            }
+                            echo "</div></div>";
                             // if($row[13]==='0'){
                             //     $sql="UPDATE item SET User_Id = '$_SESSION[UserID]' WHERE Id_Item = '$item_id'";
                             //     $result=$conn->query($sql);
