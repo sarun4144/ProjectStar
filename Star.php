@@ -119,7 +119,8 @@
       </footer>
   </div>
 </div>
-
+</body>
+</html>
 <script>
 var button = document.getElementById("myBtn");
 var Scroll = document.getElementById("Scroll");
@@ -168,5 +169,4 @@ function topFunction() {
 
 </script>
 
-</body>
-</html>
+
