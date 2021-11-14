@@ -156,130 +156,68 @@ button{
         <hr class="new1">
         <!-- item-->
         <div class="wrap"> <!-- Layer1 -->
-
                 
-                    <div class="box" style="background-color: #242736">
-                        <div class="border-bottom">
-                            <img src="Turnip Hot butt.png" alt="Item" style="width: 200px;">
-                        </div>
-                        <div style="text-align: left; margin-left: 10px; margin-top: 10px;">
-                            #0001
-                            <br>
-                            Plant
-                            <br>
-                            Serious / Cactus / Pumpkin / Hot butt
-                        </div>
-                        <div class="text-start">
-                            <button class="btn btn-danger ms-2 mt-2 me-2 text-white fw-bold" "  data-bs-target="#sell" data-bs-toggle="modal">Sell</button>
-                            
-                            <div class="modal fade" id="sell">
-                                <div class="modal-dialog">
-                                    <div class="modal-content bg-dark">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title ">Sell Item</h5>
-                                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                    <?php
+
+                        $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
+                        $sql="SELECT * FROM item WHERE User_Id = $_SESSION[UserID] ";
+                        $result =  $conn -> query($sql);
+                        
+                        while($row=$result->fetch()){
+                            echo "<div class='box' style='background-color: #242736'>
+                            <div class='border-bottom'>
+                                <img src='Turnip Hot butt.png' alt='Item' style='width: 200px;'>
+                            </div>
+                            <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
+                            echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<br> ATK - ".$row[2]." DEF - ".$row[3]." INT - ".$row[4]." VIT - ".$row[5]."<br> CHA - ".$row[6]." AGI - ".$row[7]." TAL - ".$row[8];
+                            echo "</div>
+                            <div class='text-start'>
+                                <button class='btn btn-danger ms-2 mt-2 me-2 text-white fw-bold' '  data-bs-target='#sell' data-bs-toggle='modal'>Sell</button>
+                                
+                                <div class='modal fade' id='sell'>
+                                    <div class='modal-dialog'>
+                                        <div class='modal-content bg-dark'>
+                                            <div class='modal-header'>
+                                                <h5 class='modal-title '>Sell Item</h5>
+                                                <button class='btn-close' data-bs-dismiss='modal'></button>
+                                            </div>
+                                            <div class='modal-body'>
+                                                <form>
+                                                    <div class='form-group'>
+                                                        <label class='h1'>Item_Name</label> <br>
+                                                        <label class='mt-3'>Price (Gem)</label>
+                                                        <input type='text' class='form-control mt-2'>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        <div class='modal-footer'>
+                                            <button class=' btn btn-danger text-white fw-bold'>Sell</button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label class="h1">Item_Name</label> <br>
-                                                    <label class="mt-3">Price (Gem)</label>
-                                                    <input type="text" class="form-control mt-2">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    <div class="modal-footer">
-                                        <button class=" btn btn-danger text-white fw-bold">Sell</button>
+                                    </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
-                        </div>   
-                    </div>
-                
-                 
-                <a href="#" style="text-decoration: none; color:#769EDB;">
-                    <div class="box" style="background-color: #242736">
-                        <div class="border-bottom">
-                            <img src="Aqua back.jpeg" alt="Item" style="width: 200px;">
-                        </div>
-                        <div style="text-align: left; margin-left: 10px; margin-top: 10px;">
-                            #0001
-                            <br>
-                            Plant
-                            <br>
-                            Serious / Cactus / Pumpkin / Hot butt
-                        </div>
-                    </div>
-                </a>
+                            </div>   
+                        </div>";
+                            // if($row[13]==='0'){
+                            //     $sql="UPDATE item SET User_Id = '$_SESSION[UserID]' WHERE Id_Item = '$item_id'";
+                            //     $result=$conn->query($sql);
+                            //     $_SESSION["ItemSync"] = 1;
+                            //     header("location:Profile.php");
+                            //     die();
+                            // }
+                            // else{
+                            //     $_SESSION["ItemError"] = 1;
+                            //     header("location:Profile.php");
+                            //     die();
+                            // }
+                        }
+                        $conn=null;
 
-                                 
-                <a href="#" style="text-decoration: none; color:#769EDB;">
-                    <div class="box" style="background-color: #242736">
-                        <div class="border-bottom">
-                            <img src="Aqua mid.jpeg" alt="Item" style="width: 200px;">
-                        </div>
-                        <div style="text-align: left; margin-left: 10px; margin-top: 10px;">
-                            #0001
-                            <br>
-                            Plant
-                            <br>
-                            Serious / Cactus / Pumpkin / Hot butt
-                        </div>
-                    </div>
-                </a>
+                    ?>
+                 <!-- ITEM 2 -->
 
             </div>
 
-            <div class="wrap"> <!-- Layer2 -->
-
-                <a href="#" style="text-decoration: none; color:#F0C76F;">
-                    <div class="box" style="background-color: #242736">
-                        <div class="border-bottom">
-                            <img src="Rimp donut.jpeg" alt="Item" style="width: 200px;">
-                        </div>
-                        <div style="text-align: left; margin-left: 10px; margin-top: 10px;">
-                            #0001
-                            <br>
-                            Plant
-                            <br>
-                            Serious / Cactus / Pumpkin / Hot butt
-                        </div>
-                    </div>
-                </a>
-                 
-                <a href="#" style="text-decoration: none; color:#FDBCFF;">
-                    <div class="box" style="background-color: #242736">
-                        <div class="border-bottom">
-                            <img src="Terminator reptile.PNG" alt="Item" style="width: 200px;">
-                        </div>
-                        <div style="text-align: left; margin-left: 10px; margin-top: 10px;">
-                            #0001
-                            <br>
-                            Plant
-                            <br>
-                            Serious / Cactus / Pumpkin / Hot butt
-                        </div>
-                    </div>
-                </a>
-
-                                 
-                <a href="#" style="text-decoration: none; color: rgb(0, 182, 0);">
-                    <div class="box" style="background-color: #242736">
-                        <div class="border-bottom">
-                            <img src="Web capture_19-9-2021_22410_marketplace.axieinfinity.com.jpeg" alt="Item" style="width: 200px;">
-                        </div>
-                        <div style="text-align: left; margin-left: 10px; margin-top: 10px;">
-                            #0001
-                            <br>
-                            Plant
-                            <br>
-                            Serious / Cactus / Pumpkin / Hot butt
-                        </div>
-                    </div>
-                </a>
-
-            </div>
         <!-- item-->
         </div>
         
