@@ -9,14 +9,14 @@
 <link rel="icon" href="https://scontent.xx.fbcdn.net/v/t1.15752-9/s261x260/245799487_267531408630886_2729645764553798750_n.png?_nc_cat=111&ccb=1-5&_nc_sid=aee45a&_nc_ohc=SdR8eRCLh24AX8iffW2&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=5bcf13950dee4473d137c76a46870f42&oe=61911213">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="categories.css">
-<div class="ms-3 me-3">
-    
-    <?php 
+<link rel="stylesheet" href="Card1.css">
+<body style="background-color: #222;">
+<div class="ms-3 me-3 sticky-top">
+<?php 
     session_start();
     include 'navbar-login.php';?>
-</div>
-<hr>
-<div id="sidebar" class="sider sticky-top">
+    <br>
+<div id="sidebar" class="sider" style="margin-left: -5px;">
     <h3>CATEGORIES</h3>
     <div class="checklist categories">
       	<ul>
@@ -40,7 +40,7 @@
     <h3>Status</h3>
     <div class="checklist categories">
       	<ul>
-			<li><a onclick="showDiv('hidden-a')" style="cursor: pointer;"><span></span>Attack</a></li>
+			<li><a onclick="showDiv('hidden-a')" style="cursor: pointer;" class=" text-white"><span></span>Attack</a></li>
             <div id="hidden-a" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="attack" class="range-slider">
@@ -56,7 +56,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-        	<li><a onclick="showDiv('hidden-d')" style="cursor: pointer;"><span></span>Defence</a></li>
+        	<li><a onclick="showDiv('hidden-d')" style="cursor: pointer;" class=" text-white"><span></span>Defence</a></li>
             <div id="hidden-d" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="defence" class="range-slider">
@@ -72,7 +72,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-v')" style="cursor: pointer;"><span></span>Vitality</a></li>
+            <li><a onclick="showDiv('hidden-v')" style="cursor: pointer;" class=" text-white"><span></span>Vitality</a></li>
             <div id="hidden-v" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="vitality" class="range-slider">
@@ -88,7 +88,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-c')" style="cursor: pointer;"><span></span>Charisma</a></li>
+            <li><a onclick="showDiv('hidden-c')" style="cursor: pointer;" class=" text-white"><span></span>Charisma</a></li>
             <div id="hidden-c" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="charisma" class="range-slider">
@@ -104,7 +104,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-ag')" style="cursor: pointer;"><span></span>Agility</a></li>
+            <li><a onclick="showDiv('hidden-ag')" style="cursor: pointer;" class=" text-white"><span></span>Agility</a></li>
             <div id="hidden-ag" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="agility" class="range-slider">
@@ -120,7 +120,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-t')"><span></span>Talent</a></li>
+            <li><a onclick="showDiv('hidden-t')" style="cursor: pointer;" class=" text-white"><span></span>Talent</a></li>
             <div id="hidden-t" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="talent" class="range-slider">
@@ -139,6 +139,41 @@
         </ul>
     </div>
 </div>
+</div>
+<div class="wrap container"> <!-- Layer1 -->
+            <?php
+
+                $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
+                $sql="SELECT * FROM item ";
+                $result =  $conn -> query($sql);
+
+                while($row=$result->fetch()){
+                    echo "<div class='box' style='background-color: #242736'>
+                    <div class='border-bottom'>
+                        <img src='Stone.png' alt='Item' style='width: 300px;'>
+                    </div>
+                    <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
+                    echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
+                    echo "</div>
+                            </div>";
+                    // if($row[13]==='0'){
+                    //     $sql="UPDATE item SET User_Id = '$_SESSION[UserID]' WHERE Id_Item = '$item_id'";
+                    //     $result=$conn->query($sql);
+                    //     $_SESSION["ItemSync"] = 1;
+                    //     header("location:Profile.php");
+                    //     die();
+                    // }
+                    // else{
+                    //     $_SESSION["ItemError"] = 1;
+                    //     header("location:Profile.php");
+                    //     die();
+                    // }
+                }
+                $conn=null;
+
+                ?>
+            </div>
+</body>
     <script>
         function showDiv(Div) {
             var x = document.getElementById(Div);
