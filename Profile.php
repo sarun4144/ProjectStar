@@ -1,10 +1,4 @@
-<?php
-    session_start();
-    if(!isset($_SESSION["Username"])){
-        header("location:login.php");
-        die();
-    }
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -91,6 +85,12 @@ button{
 
   <div class="container">
     <?php include 'navbar.php';?>
+    <?php
+    if(!isset($_SESSION["Username"])){
+        header("location:login.php");
+        die();
+    }
+    ?>
     
         <?php 
             if(isset($_SESSION["ItemSync"])){
@@ -110,6 +110,16 @@ button{
             if(isset($_SESSION["SellError"])){
                 echo "<script>alert('Can't sell not own Item!');</script>";
                 unset($_SESSION["SellError"]);
+            }
+          ?>
+          <?php 
+            if(isset($_SESSION["ItemCancel"])){
+                echo "<script>alert('Canceled!');</script>";
+                unset($_SESSION["ItemCancel"]);
+            }
+            if(isset($_SESSION["CancelError"])){
+                echo "<script>alert('Can't Cancel');</script>";
+                unset($_SESSION["CancelError"]);
             }
           ?>
 
@@ -180,7 +190,22 @@ button{
                                     </div>
                             </div>
                             <div class="modal-footer">
-                                    <button class="btn btn-danger text-white fw-bold" type="submit"">Yes</button>
+                            <?php
+                                
+                                $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
+                                $sql="SELECT * FROM item WHERE User_Id = $_SESSION[UserID] ";
+                                $result =  $conn -> query($sql);
+                                
+                                $row=$result->fetch();
+                                    echo "<a href='cancelsell.php?item_id=$row[0]'>
+                                    <button class='btn btn-danger text-white fw-bold' type='submit'>Yes</button>
+                                    </a>";
+                                
+                                $conn=null;
+
+                            ?>
+                                
+                                    
                                     <button class="btn btn-secondary text-white fw-bold" type="submit" data-bs-dismiss="modal">Close</button>
                             </div>
                             </div>
@@ -191,7 +216,7 @@ button{
         <hr class="new1">
         <!-- item-->
         <div class="text-end">
-            <button class=" btn btn-danger text-white fw-bold me-2 mt-2" data-bs-target="#sell" data-bs-toggle="modal">Sell</button></div> 
+            <button class=" btn btn-danger text-white fw-bold me-2 mt-2 mb-2" data-bs-target="#sell" data-bs-toggle="modal">Sell</button></div> 
                     <div class="modal fade" id="sell">
                         <div class="modal-dialog">
                             <div class="modal-content bg-dark">
