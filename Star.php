@@ -104,7 +104,7 @@
     </div>
   </div>
 
-  <div class="footer-basic" style="margin-top: 82em;">
+  <div class="footer-basic" style="margin-top: 50em;">
       <footer>
           <div class="social"><a href="https://www.instagram.com/p/BrajjGLHcoR/" target="_blank"><i class="bi bi-instagram"></i></a>
           <a href="https://twitter.com/FortniteGame" target="_blank"><i class="bi bi-twitter"></i></a>
