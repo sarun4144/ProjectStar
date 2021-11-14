@@ -12,9 +12,6 @@ a.White:hover{
 </style>
 <header>
 <?php 
-    session_start();
-?>
-<?php 
     if(!isset($_SESSION["id"])){
 ?>
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
