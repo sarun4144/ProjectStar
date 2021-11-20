@@ -84,8 +84,10 @@ button{
 <body style="background-color: #222">
 
   <div class="container">
-    <?php include 'navbar.php';?>
+    
     <?php
+    session_start();
+    include 'navbar.php';
     if(!isset($_SESSION["Username"])){
         header("location:login.php");
         die();
@@ -176,41 +178,6 @@ button{
                             </div>
                         </div>
                     </div>  
-                    <div class="modal fade" id="cancel">
-                        <div class="modal-dialog">
-                            <div class="modal-content bg-dark">
-                                <div class="modal-header">
-                                    <h5 class="modal-title ">Cancel Item Sell</h5>
-                                    <button class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                            <div class="modal-body">
-                                
-                                    <div class="form-group">
-                                        <label>Are you sure to CANCEL selling this Item</label>
-                                    </div>
-                            </div>
-                            <div class="modal-footer">
-                            <?php
-                                
-                                $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-                                $sql="SELECT * FROM item WHERE User_Id = $_SESSION[UserID] ";
-                                $result =  $conn -> query($sql);
-                                
-                                $row=$result->fetch();
-                                    echo "<a href='cancelsell.php?item_id=$row[0]'>
-                                    <button class='btn btn-danger text-white fw-bold' type='submit'>Yes</button>
-                                    </a>";
-                                
-                                $conn=null;
-
-                            ?>
-                                
-                                    
-                                    <button class="btn btn-secondary text-white fw-bold" type="submit" data-bs-dismiss="modal">Close</button>
-                            </div>
-                            </div>
-                        </div>
-                    </div>      
         </div>
         
         <hr class="new1">
@@ -258,22 +225,33 @@ button{
                             <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
                             echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div class='mt-2' style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
                             if($hos==='S'){
-                                
-                                echo "<div class='text-end me-2'><button class='btn btn-danger text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>Cancel</button></div>";
+                                echo "<div class='text-end me-2'><button class='btn btn-danger text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>Cancel</button></div>";?>
+                            <div class="modal fade" id="cancel">
+                                <div class="modal-dialog">
+                                    <div class="modal-content bg-dark">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title ">Cancel Item Sell</h5>
+                                            <button class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label>Are you sure to CANCEL selling this Item</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <?php
+                                                echo "<a href='cancelsell.php?item_id=$row[0]'>
+                                                <button class='btn btn-danger text-white fw-bold' type='submit'>Yes</button>
+                                                </a>";
+                                            ?>
+                                            <button class="btn btn-secondary text-white fw-bold" type="submit" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
                             }
-                            echo "</div></div>";
-                            // if($row[13]==='0'){
-                            //     $sql="UPDATE item SET User_Id = '$_SESSION[UserID]' WHERE Id_Item = '$item_id'";
-                            //     $result=$conn->query($sql);
-                            //     $_SESSION["ItemSync"] = 1;
-                            //     header("location:Profile.php");
-                            //     die();
-                            // }
-                            // else{
-                            //     $_SESSION["ItemError"] = 1;
-                            //     header("location:Profile.php");
-                            //     die();
-                            // }
+                            echo "</div></div>";    
                         }
                         $conn=null;
 

@@ -11,6 +11,19 @@
 <link rel="stylesheet" href="categories.css">
 <link rel="stylesheet" href="Card1.css">
 <body style="background-color: #222;">
+<?php
+    if(isset($_GET['name'])){
+        if($_GET['name']=='All'){
+            $name = "All";
+        }else if($_GET['name']=='Notsell'){
+            $name = "Not For Sale";
+        }else if($_GET['name']=='Forsell'){
+            $name = "For Sale";
+        }
+    }else{
+        $name = "For Sale";
+    }
+?>
 <div class="ms-3 me-3 sticky-top">
 <?php 
     session_start();
@@ -20,27 +33,27 @@
     <h3>CATEGORIES</h3>
     <div class="checklist categories">
       	<ul>
-			<li><a href=""><span></span><img src="https://cdn-icons-png.flaticon.com/512/2845/2845328.png" width="15px" height="">&nbsp;Armor</a></li>
-        	<li><a href=""><span></span><img src="https://cdn-icons.flaticon.com/png/512/3430/3430797.png" width="15px" height="">&nbsp;Weapon</a></li>
-            <li><a href=""><span></span><img src="https://cdn-icons-png.flaticon.com/512/703/703623.png" width="15px" height="">&nbsp;Vehicle</a></li>
-            <li><a href=""><span></span><img src="https://cdn-icons.flaticon.com/png/512/1289/1289506.png" width="15px" height="">&nbsp;Accensories</a></li>
-            <li><a href=""><span></span><img src="https://cdn-icons.flaticon.com/png/512/2579/2579397.png" width="15px" height="">&nbsp;Consumable</a></li>
-            <li><a href=""><span></span><img src="https://cdn-icons-png.flaticon.com/512/1021/1021357.png" width="15px" height="">&nbsp;Crafting Materials</a></li>
+			<li><label for="Armor" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Armor" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Armor</label></li>
+        	<li><label for="Weapon" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Weapon" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Weapon</label></li>
+            <li><label for="Vehicle" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Vehicle" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Vehicle</label></li>
+            <li><label for="Accensories" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Accensories" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Accensories</label></li>
+            <li><label for="Consumable" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Consumable" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Consumable</label></li>
+            <li><label for="Crafting Materials" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Crafting Materials" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Crafting Materials</label></li>
         </ul>
     </div>
     <h3>Rarelity</h3>
     <div class="checklist categories">
       	<ul>
-			<li><a href=""><span></span><img src="" width="15px" height=""> Common</a></li>
-        	<li><a href=""><span></span><img src="" width="15px" height=""> Rare</a></li>
-            <li><a href=""><span></span><img src="" width="15px" height=""> Epic</a></li>
-            <li><a href=""><span></span><img src="" width="15px" height=""> Legendary</a></li>
+			<li><label for="Common" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Common" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Common</label></li>
+        	<li><label for="Rare" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Rare" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Rare</label></li>
+            <li><label for="Epic" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Epic" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Epic</label></li>
+            <li><label for="Legendary" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Legendary" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Legendary</label></li>
         </ul>
     </div>
     <h3>Status</h3>
     <div class="checklist categories">
       	<ul>
-			<li><a onclick="showDiv('hidden-a')" style="cursor: pointer;" class=" text-white"><span></span>Attack</a></li>
+			<li><label for="Attack-i" onclick="showDiv('hidden-a')" style="cursor: pointer;" class=" text-white"><input id="Attack-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-a')">Attack</label></li>
             <div id="hidden-a" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="attack" class="range-slider">
@@ -56,7 +69,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-        	<li><a onclick="showDiv('hidden-d')" style="cursor: pointer;" class=" text-white"><span></span>Defence</a></li>
+        	<li><label for="Defence-i" onclick="showDiv('hidden-d')" style="cursor: pointer;" class=" text-white"><input type="checkbox" id="Defence-i" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-d')">Defence</label></li>
             <div id="hidden-d" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="defence" class="range-slider">
@@ -72,7 +85,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-v')" style="cursor: pointer;" class=" text-white"><span></span>Vitality</a></li>
+            <li><label for="Vitality-i" onclick="showDiv('hidden-v')" style="cursor: pointer;" class=" text-white"><input id="Vitality-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-v')">Vitality</label></li>
             <div id="hidden-v" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="vitality" class="range-slider">
@@ -88,7 +101,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-c')" style="cursor: pointer;" class=" text-white"><span></span>Charisma</a></li>
+            <li><label for="Charisma-i" onclick="showDiv('hidden-c')" style="cursor: pointer;" class=" text-white"><input id="Charisma-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-c')">Charisma</label></li>
             <div id="hidden-c" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="charisma" class="range-slider">
@@ -104,7 +117,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-ag')" style="cursor: pointer;" class=" text-white"><span></span>Agility</a></li>
+            <li><label for="Agility-i" onclick="showDiv('hidden-ag')" style="cursor: pointer;" class=" text-white"><input id="Agility-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-ag')">Agility</label></li>
             <div id="hidden-ag" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="agility" class="range-slider">
@@ -120,7 +133,7 @@
                 </div>
                 <script src="slider.js"></script>
             </div>
-            <li><a onclick="showDiv('hidden-t')" style="cursor: pointer;" class=" text-white"><span></span>Talent</a></li>
+            <li><label for="Talent-i" onclick="showDiv('hidden-t')" style="cursor: pointer;" class=" text-white"><input id="Talent-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-t')">Talent</label></li>
             <div id="hidden-t" style="display: none;">
                 <div class="filter level-filter level-req">
                     <div id="talent" class="range-slider">
@@ -140,39 +153,55 @@
     </div>
 </div>
 </div>
-<div class="wrap container"> <!-- Layer1 -->
-            <?php
-
-                $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-                $sql="SELECT * FROM item ";
-                $result =  $conn -> query($sql);
-
-                while($row=$result->fetch()){
-                    echo "<div class='box' style='background-color: #242736'>
-                    <div class='border-bottom'>
-                        <img src='Stone.png' alt='Item' style='width: 300px;'>
-                    </div>
-                    <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
-                    echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
-                    echo "</div>
-                            </div>";
-                    // if($row[13]==='0'){
-                    //     $sql="UPDATE item SET User_Id = '$_SESSION[UserID]' WHERE Id_Item = '$item_id'";
-                    //     $result=$conn->query($sql);
-                    //     $_SESSION["ItemSync"] = 1;
-                    //     header("location:Profile.php");
-                    //     die();
-                    // }
-                    // else{
-                    //     $_SESSION["ItemError"] = 1;
-                    //     header("location:Profile.php");
-                    //     die();
-                    // }
-                }
-                $conn=null;
-
-                ?>
-            </div>
+<div class="dropdown">
+                <button type="button" class="btn text-white fw-bold dropdown-toggle ms-3" style="background-color:#E95589" 
+                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $name ?></button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="marketplace.php?name=All">All</a></li>
+                        <li><a class="dropdown-item" href="marketplace.php">For Sale</a></li>
+                        <li><a class="dropdown-item" href="marketplace.php?name=Notsell">Not For Sale</a></li>
+                  </ul>
+</div>
+                        <div class="wrap container">
+                            <?php
+                            $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
+                            if(isset($_GET['name'])) {
+                                if($_GET['name']=='Notsell'){
+                                    $sql="SELECT * FROM item where Hold_or_Sell = 'H'";
+                                }else if($_GET['name']=='All'){
+                                    $sql="SELECT * FROM item";
+                                }
+                            }else{
+                                $sql="SELECT * FROM item where Hold_or_Sell = 'S'";
+                            }
+                            $result =  $conn -> query($sql);
+                            $sql1="SELECT * FROM market ";                 
+                            $result1 =  $conn -> query($sql1);
+                                while($row=$result->fetch()){
+                                    $hos=$row[10];                     
+                                    $item_id=$row[0];
+                                    echo "<div class='box' style='background-color: #242736'>
+                                            <div class='border-bottom'>
+                                            <img src='Stone.png' alt='Item' style='width: 300px;'>
+                                            </div>
+                                            <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
+                                    echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
+                                    if($hos==='S'){
+                                        $row=$result1->fetch();
+                                            echo "<a href='buyitem.php?item_id=$item_id'>
+                                                    <div class='text-end me-3'>
+                                                        <button class='btn btn-success text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>
+                                                            Buy for $row[1] Gem
+                                                        </button>
+                                                    </div>
+                                                </a>";
+                                    }
+                                    echo "</div>
+                                          </div>";
+                                    }
+                                    $conn=null;
+                            ?>
+                        </div>
 </body>
     <script>
         function showDiv(Div) {
