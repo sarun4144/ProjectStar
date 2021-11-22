@@ -5,14 +5,11 @@
     $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
     $sql="SELECT * FROM item WHERE Id_Item = '$item_id'";
     $result =  $conn -> query($sql);
-    $sql1="SELECT * FROM item WHERE Id_Item = '$item_id'";
-    $result1 =  $conn -> query($sql);
-    echo $item_id;
     while($row=$result->fetch()){
         if($row[13]===$user){
-            $sql1="UPDATE item SET Hold_or_Sell = 'H' WHERE Id_Item = '$item_id'";
-            $result1=$conn->query($sql1);
-            $sql="INSERT INTO log (Price,User_Id_Seller,Item_Id,State) VALUES ('$price_gem','$user','$item_id','Cancel')";
+            $sql="UPDATE item SET Hold_or_Sell = 'H' WHERE Id_Item = '$item_id'";
+            $result=$conn->query($sql);
+            $sql="INSERT INTO log (User_Id_Seller,Item_Id,State) VALUES ('$user','$item_id','Cancel')";
             $conn->exec($sql);
             $sql="DELETE FROM market where Item_Id = '$item_id'";
             $conn->exec($sql);

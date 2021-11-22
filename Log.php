@@ -136,16 +136,13 @@ button{
    <table class=" table table-striped"style="width:100%">
         <?php
             $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-            $sql="SELECT t1.Id_Log,t1.Price,t1.Date,t2.Name,t3.Username,t4.Username,t1.State
+            $sql="SELECT t1.Id_Log,t1.Price,t1.Date,t1.Item_Id,t3.Username,t4.Username,t1.State
                         FROM log AS t1 INNER JOIN item AS t2 ON (t1.Item_Id=t2.Id_item)  
                         INNER JOIN User AS t3 ON (t1.User_Id_Seller=t3.ID)  
                         INNER JOIN User AS t4 ON (t1.User_Id_Buyer=t4.ID)
                         ORDER BY t1.Id_Log DESC";
                         $result =  $conn -> query($sql);
-                        // $sql="SELECT t1.Id_Item,t1.Name,t1.Atk,t1.Def,t1.Int,t1.Vit,t1.Cha,t1.Agi,t1.Tal,t1.Img,t1.Hold_Or_Sell,t2.Name,t3.Name,t4.Username
-                        // FROM item AS t1 INNER JOIN catagory AS t2 ON (t1.Category_Id=t2.Id_Category) 
-                        // INNER JOIN rarity AS t3 ON (t1.Rarity_Id=t3.Rarity) INNER JOIN user AS t4 ON (t1.User_Id=t4.ID) WHERE Id_Item = $item_id ";
-                        // $result =  $conn -> query($sql);
+                        
         ?>
      <table width="100%" >
    <tr>
