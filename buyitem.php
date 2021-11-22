@@ -87,21 +87,11 @@ button{
         <?php 
         session_start();
         include 'navbar.php';
-
+        if(isset($_SESSION["ItemSoldError"])){
+          echo "<script> alert('You can not by your own item OR Not enough gem'); </script>";
+          unset($_SESSION["ItemSoldError"]);
+        }
         ?>
-
-      <?php 
-            if(isset($_SESSION["ItemSoldError"])){
-              echo "<script> alert('You can not by your own item OR Not enough gem'); </script>";
-              unset($_SESSION["ItemSoldError"]);
-            }
-            if(isset($_SESSION["ItemSold"])){
-                echo "<script> alert('Buy success!'); </script>";
-                unset($_SESSION["ItemSold"]);
-            }
-          ?>
-
-    
             <div class="mt-1"></div>
 
         <div class="gradient-border mt-4">
@@ -114,12 +104,14 @@ button{
                           $user=$_SESSION["UserID"];
                       }
                         $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-                        $sql="SELECT t1.Id_Item,t1.Name,t1.Atk,t1.Def,t1.Int,t1.Vit,t1.Cha,t1.Agi,t1.Tal,t1.Img,t1.Hold_Or_Sell,t2.Name,t3.Name,t4.Username,t4.ID
-                        FROM item AS t1 INNER JOIN catagory AS t2 ON (t1.Category_Id=t2.Id_Category) 
-                        INNER JOIN rarity AS t3 ON (t1.Rarity_Id=t3.Rarity) INNER JOIN user AS t4 ON (t1.User_Id=t4.ID) WHERE Id_Item = $item_id ";
+                        $sql="SELECT t1.Id_Item,t1.Name,t1.Atk,t1.Def,t1.Int,t1.Vit,t1.Cha,t1.Agi,t1.Tal,t1.Img,t1.Hold_Or_Sell,t2.Name,t3.Name,t4.Username,t4.ID,t5.Price
+                        FROM item AS t1 
+                        INNER JOIN catagory AS t2 ON (t1.Category_Id=t2.Id_Category) 
+                        INNER JOIN rarity AS t3 ON (t1.Rarity_Id=t3.Rarity) 
+                        INNER JOIN user AS t4 ON (t1.User_Id=t4.ID) 
+                        INNER JOIN market AS t5 ON (t1.Id_Item=t5.Item_Id) WHERE t1.Id_Item = $item_id";
                         $result =  $conn -> query($sql);
-                        $sql1="SELECT * FROM market ";
-                        $result1 =  $conn -> query($sql1);
+
                         while($row=$result->fetch()){
                             echo "<div class='col-1'></div>";
                             echo "<div class='col-5' style='margin-left:auto ; margin-right:auto ;'>
@@ -154,16 +146,14 @@ button{
                             $item_id=$row[0];
                             
                             if($hos==='S' && $user != $row[14]){
-                                $row=$result1->fetch();
                                     echo "<a href='buyitemupdate.php?item_id=$item_id'>
                                             <div class='text-end me-3'>
                                                 <button class='btn btn-success text-white fw-bold mt-2' 'data-bs-target='#buy' data-bs-toggle='modal'>
-                                                    Buy for ".$row[1]." Gem
+                                                    Buy for ".$row[15]." Gem
                                                 </button>
                                             </div>
                                         </a>";
                             }else if($hos==='S' && $user === $row[14]){
-                              $row=$result1->fetch();
                                   echo "<a href='cancelsell.php?item_id=$item_id'>
                                           <div class='text-end me-3'>
                                               <button class='btn btn-danger text-white fw-bold mt-2' 'data-bs-target='#buy' data-bs-toggle='modal'>

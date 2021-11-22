@@ -47,7 +47,7 @@
             $result1=$conn->query($sql1);
 
             $_SESSION["ItemSold"] = 1;
-            header("location:buyitem.php?item_id=".$item_id);
+            header("location:Profile.php");
             die();
         }else if($buyer_gem  < $row[5]){
             $_SESSION["ItemSoldError"] = 1;

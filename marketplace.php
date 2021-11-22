@@ -93,7 +93,7 @@
                                             echo "<a href='buyitem.php?item_id=$item_id'>
                                                     <div class='text-end me-3'>
                                                         <button class='btn btn-success text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>
-                                                            Buy for $row[1] Gem
+                                                            Buy This Item
                                                         </button>
                                                     </div>
                                                 </a>";
