@@ -1,4 +1,5 @@
 <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
@@ -11,18 +12,6 @@
 <link rel="stylesheet" href="categories.css">
 <link rel="stylesheet" href="Card1.css">
 <body style="background-color: #222;">
-
-<?php
-    if(isset($_GET['name'])){
-        if($_GET['name']=='All'){
-            $name = "All";
-        }else if($_GET['name']=='Notsell'){
-            $name = "Not For Sale";
-        }else if($_GET['name']=='Forsell'){
-            $name = "For Sale";
-        }
-    }
-?>
 <button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 <div class="ms-3 me-3 sticky-top">
 
@@ -35,12 +24,12 @@
     <h3>CATEGORIES</h3>
     <div class="checklist categories">
       	<ul>
-			<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Armor" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Armor</label></li>
-        	<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Weapon" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Weapon</label></li>
-            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Vehicle" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Vehicle</label></li>
-            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Accensories" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Accensories</label></li>
-            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Consumable" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Consumable</label></li>
-            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Crafting Materials" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Crafting Materials</label></li>
+			<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Armor" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Armor</label></li>
+        	<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Weapon" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Weapon</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Vehicle" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Vehicle</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Accensories" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Accensories</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Consumable" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Consumable</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Crafting_Materials" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Crafting Materials</label></li>
         </ul>
     </div>
     <h3>Rarelity</h3>
@@ -54,59 +43,36 @@
     </div>
 </div>
 <div class="dropdown">
-                <button type="button" class="btn text-white fw-bold dropdown-toggle ms-3" style="background-color:#E95589" 
-                id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $name ?></button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="marketplace.php?name=All">All</a></li>
-                        <li><a class="dropdown-item" href="marketplace.php?name=Forsell">For Sale</a></li>
-                        <li><a class="dropdown-item" href="marketplace.php?name=Notsell">Not For Sale</a></li>
-                  </ul>
+    <button type="button" class="btn text-white fw-bold dropdown-toggle ms-3" style="background-color:#E95589" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><span id='select'>All</span></button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><label class="dropdown-item" id='all'>All</label></li>
+            <li><label class="dropdown-item" id='sell'>For Sale</label></li>
+            <li><label class="dropdown-item" id='notsell'>Not For Sale</label></li>
+        </ul>
 </div>
 </div>  
-                        <div class="wrap container">
-                            <?php
-                            $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-                            if(isset($_GET['name'])) {
-                                if($_GET['name']=='Notsell'){
-                                    $sql="SELECT * FROM item where Hold_or_Sell = 'H'";
-                                }else if($_GET['name']=='All'){
-                                    $sql="SELECT * FROM item";
-                                }else if($_GET['name']=='Forsell'){
-                                    $sql="SELECT * FROM item where Hold_or_Sell = 'S'";
-                                }
-                            }
+                        <div class="wrap container" id="card-8">
                             
-                            $result =  $conn -> query($sql);
-                            $sql1="SELECT * FROM market";          
-                            $result1 =  $conn -> query($sql1);
-                                while($row=$result->fetch()){
-                                    $hos=$row[10];                     
-                                    $item_id=$row[0];
-                                    echo "<div class='box' style='background-color: #242736'>
-                                            <div class='border-bottom'>
-                                            <img src='Stone.png' alt='Item' style='width: 300px;'>
-                                            </div>
-                                            <div style='text-align: left; margin-left: 10px; margin-top: 10px;'>";
-                                    echo "Item ID: ".$row[0]."<br> Name: ".$row[1]."<div style='font-size: 12.5px;'>ATK - ".$row[2]."<br> DEF - ".$row[3]."<br> INT - ".$row[4]."<br> VIT - ".$row[5]."<br> CHA - ".$row[6]."<br> AGI - ".$row[7]."<br> TAL - ".$row[8]."</div>";
-                                    if($hos==='S'){
-                                        $row=$result1->fetch();
-                                            echo "<a href='buyitem.php?item_id=$item_id'>
-                                                    <div class='text-end me-3'>
-                                                        <button class='btn btn-success text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>
-                                                            Buy This Item
-                                                        </button>
-                                                    </div>
-                                                </a>";
-                                    }
-                                    echo "</div>
-                                          </div>";
-                                    }
-                                    $conn=null;
-                            ?>
                         </div>          
 </body>
 
     <script>
+        let temp = [];                  /* Filter */
+        $(document).ready(function(){
+            temp["Armor"] = "";
+            temp["Weapon"] = "";
+            temp["Vehicle"] = "";
+            temp["Accensories"] = "";
+            temp["Consumable"] = "";
+            temp["Crafting_Materials"] = "";
+            temp["Common"] = "";
+            temp["Rare"] = "";
+            temp["Epic"] = "";
+            temp["Legendary"] = "";
+            temp["type"] = "all";
+            getBack();
+        });
+
         var button = document.getElementById("myBtn");
         window.onscroll = function() {scrollFunction()};
         function scrollFunction() {
@@ -128,30 +94,50 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
-        function check(response, urlPath){
-            if(document.getElementById('Armor').checked){
-                let updateurt = window.location.href + "&cat=1";
-                window.history.pushState('', '', updateurt);
+        
+        $('input').click(function () {
+            $('input').each(function(){
+                if($(this).prop('checked') == true){
+                    temp[$(this).attr('id')] = "a";
+                }else{
+                    temp[$(this).attr('id')] = "";
+                }
+            })
+            console.log(temp);
+            getBack();
+        });
+        $('.dropdown-item').click(function () {
+            temp["type"]=$(this).attr('id');
+            if($(this).attr('id') == 'all'){
+                $('#select').text('All');
             }
-            if(document.getElementById('Weapon').checked){
-                let updateurt = window.location.href + "&cat=2";
-                window.history.pushState('', '', updateurt);
+            if($(this).attr('id') == 'sell'){
+                $('#select').text('For Sale');
             }
-            if(document.getElementById('Vehicle').checked){
-                let updateurt = window.location.href + "&cat=3";
-                window.history.pushState('', '', updateurt);
+            if($(this).attr('id') == 'notsell'){
+                $('#select').text('Not For Sale');
             }
-            if(document.getElementById('Accensories').checked){
-                let updateurt = window.location.href + "&cat=4";
-                window.history.pushState('', '', updateurt);
-            }
-            if(document.getElementById('Consumable').checked){
-                let updateurt = window.location.href + "&cat=5";
-                window.history.pushState('', '', updateurt);
-            }
-            if(document.getElementById('Crafting Materials').checked){
-                let updateurt = window.location.href + "&cat=6";
-                window.history.pushState('', '', updateurt);
-            }
-        }    
+            getBack();
+        });
+        function getBack(){
+            $.ajax({
+                url: 'back-end.php', type: 'post', dataType: 'json', 
+                data: { 
+                    Armor: temp["Armor"],
+                    Weapon : temp["Weapon"],
+                    Vehicle: temp["Vehicle"],
+                    Accensories: temp["Accensories"],
+                    Consumable: temp["Consumable"],
+                    Crafting_Materials: temp["Crafting_Materials"],
+                    Common: temp["Common"],
+                    Rare : temp["Rare"],
+                    Epic : temp["Epic"],
+                    Legendary : temp["Legendary"],
+                    type: temp["type"]
+                },
+                success: function(response){
+                    $('#card-8').html(response.code);
+                }
+            });
+        }
     </script>
