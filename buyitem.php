@@ -82,7 +82,7 @@ button{
     <link rel="stylesheet" href="Card1.css">
   </head>
 <body style="background-color: #222">
-
+          
     <div class="container">
         <?php 
         session_start();
@@ -92,23 +92,53 @@ button{
             die();
         }
         ?>
+
+      <?php 
+            if(isset($_SESSION["ItemSold"])){
+                echo "<script> alert('Buy success!'); </script>";
+                unset($_SESSION["ItemSold"]);
+            }
+            if(isset($_SESSION["SoldError"])){
+                echo "<script> alert('You can't by your own item OR Not enough gem'); </script>";
+                unset($_SESSION["SoldError"]);
+            }
+          ?>
+
     
-            
+            <div class="mt-1"></div>
 
         <div class="gradient-border mt-4">
             <div class="conatiner">
+              <div class="row">
                     <?php
                         $item_id=$_GET['item_id'];
                         $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-                        $sql="SELECT t1.Id_Item,t1.Name,t1.Atk,t1.Def,t1.Int,t1.Vit,t1.Cha,t1.Agi,t1.Tal,t1.Img,t1.Hold_Or_Sell,t2.Name,t3.Name 
+                        $sql="SELECT t1.Id_Item,t1.Name,t1.Atk,t1.Def,t1.Int,t1.Vit,t1.Cha,t1.Agi,t1.Tal,t1.Img,t1.Hold_Or_Sell,t2.Name,t3.Name,t4.Username
                         FROM item AS t1 INNER JOIN catagory AS t2 ON (t1.Category_Id=t2.Id_Category) 
-                        INNER JOIN rarity AS t3 ON (t1.Rarity_Id=t3.Rarity) WHERE Id_Item = $item_id ";
+                        INNER JOIN rarity AS t3 ON (t1.Rarity_Id=t3.Rarity) INNER JOIN user AS t4 ON (t1.User_Id=t4.ID) WHERE Id_Item = $item_id ";
                         $result =  $conn -> query($sql);
-                        
+                        $sql1="SELECT * FROM market ";
+                        $result1 =  $conn -> query($sql1);
                         while($row=$result->fetch()){
-                            echo "<img src='Stone.png' alt='Item' style='width: 500px;'>";
-                            echo 'Item ID: '.$row[0].'<br>';
-                            echo 'Item name: '.$row[1].'<br>';
+                            echo "<div class='col-1'></div>";
+                            echo "<div class='col-5' style='margin-left:auto ; margin-right:auto ;'>
+                             <img src='Stone.png' alt='Item' style='width: 500px;'>
+                            </div> ";
+                            echo "<div class='col-1'></div>";
+
+                            echo "<div class='col-5'>";
+                            echo "<div class='mt-5' style='font-size: 30px'>";
+                            echo '#'.$row[0].'<br>';
+                            echo ''.$row[1].'';
+                            echo "</div>";
+
+                            echo "<div class='mt-3' style='font-size: 20px'>";
+                            echo 'Category: '.$row[11].'<br>';
+                            echo 'Rarity: '.$row[12].'<br>';
+                            echo 'Owner: '.$row[13].'<br>';
+                            echo "</div>";
+                            
+                            echo "<div class='mt-3' style='font-size: 15px'>";
                             echo 'Attack: '.$row[2].'<br>';
                             echo 'Defence: '.$row[3].'<br>';
                             echo 'Intelligent: '.$row[4].'<br>';
@@ -117,17 +147,17 @@ button{
                             echo 'Agility: '.$row[7].'<br>';
                             echo 'Talent: '.$row[8].'<br>';
                             echo 'Image: '.$row[9].'<br>';
-                            echo 'Category: '.$row[11].'<br>';
-                            echo 'Rarity: '.$row[12].'<br>';
+                            echo "</div>";
+
                             $hos=$row[10];
                             $item_id=$row[0];
                             
                             if($hos==='S'){
-                                $row=$result->fetch();
-                                    echo "<a href='buyitem.php?item_id=$item_id'>
+                                $row=$result1->fetch();
+                                    echo "<a href='buyitemupdate.php?item_id=$item_id'>
                                             <div class='text-end me-3'>
-                                                <button class='btn btn-success text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>
-                                                    Buy 
+                                                <button class='btn btn-success text-white fw-bold mt-2' 'data-bs-target='#buy' data-bs-toggle='modal'>
+                                                    Buy for ".$row[1]." Gem
                                                 </button>
                                             </div>
                                         </a>";
@@ -135,6 +165,7 @@ button{
                         }
                         $conn=null;
                     ?>
+              </div>
             </div>
         </div>
     </div>
