@@ -83,15 +83,15 @@ button{
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    
     <title>SpaceUtopiaMarket</title>
     <link rel="icon" href="https://scontent.xx.fbcdn.net/v/t1.15752-9/s261x260/245799487_267531408630886_2729645764553798750_n.png?_nc_cat=111&ccb=1-5&_nc_sid=aee45a&_nc_ohc=SdR8eRCLh24AX8iffW2&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=5bcf13950dee4473d137c76a46870f42&oe=61911213">
     <link rel="stylesheet" href="Card1.css">
+    <link rel="stylesheet" href="BG.css">   
   </head>
-<body style="background-color: #222">
+<body style="background-color: #222;">
 
   <div class="container">
-    <?php include 'navbar.php';?>
+    <?php include 'navbar-login.php';?>
     
         <?php 
             if(isset($_SESSION["ItemSync"])){
@@ -115,56 +115,34 @@ button{
           ?>
 
       <div class="gradient-border mt-5 ">
-      <?php 
-  if(!isset($_SESSION["id"])){
-?>
+      
         <table class="center">  
           <tr>
             <td colspan="2">
-              <div class="align-items-center"><img src="User-icon.png" alt="profile" class="headshot-2 wide-100px mt-3" ></div>
             </td>
           </tr>
 
         </table>
-        <?php
-  }else{
-  ?>
+      
   <table class="center">  
-          <tr>
-            <td colspan="2">
-              <div class="align-items-center"><img src="User-icon.png" alt="profile" class="headshot-2 wide-100px mt-3" ></div>
-            </td>
-          </tr>
-
           <tr>
            <td colspan="2" style="text-align: center;">
               <div class="mt-3 h1">
-                                <?php
-                                    $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-                                    $sql="SELECT * FROM user WHERE Username='$_SESSION[Username]'";
-                                    $result=$conn->query($sql);
-                                    while($row=$result->fetch()){
-                                        echo $row['Username'];
-                                }
-                                    $conn=null;
-                                ?>
-              </div>
+                              <div style="padding-top: 2px; font-size: 60px;" >Dashboard</div> 
             </td>
           </tr>
         </table>  
-        <?php 
-      }
-    ?>
         <br>  
    <table class=" table table-striped"style="width:100%">
         <?php
             $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
-            $sql="SELECT * FROM log ORDER BY Id_Log DESC"; 
-            $result=$conn->query($sql);
+            $sql="SELECT t1.Id_Log,t1.Price,t1.Date,t2.Name,t1.User_Id_Seller,t1.User_Id_Buyer,t1.State
+                        FROM log AS t1 INNER JOIN item AS t2 ON (t1.Item_Id=t2.Id_item)  ORDER BY t1.Id_Log DESC";
+                        $result =  $conn -> query($sql);
         ?>
      <table width="100%" >
    <tr>
-     <td Class='text4'>Id_Log</td>
+     <td style="padding-left: 4px;" Class='text4'>Id_Log</td>
      <td Class='text4'>Price</td>
      <td Class='text4'>Date</td>
      <td Class='text4'>Item_Id</td>
@@ -173,10 +151,11 @@ button{
      <td Class='text4'>State</td>
    </tr>
             <?php
-            while($row=$result->fetch()){ 
-              
+                echo "<br>";  
+            while($row=$result->fetch()){   
+             
               if($row['6']=='Sell'){
-                 echo " <tr><td Class='text4' style='color: #e69a20' > [ ".$row['0']. " ]  </td> <td Class='text4' style='color: #e69a20' >" .$row['1']. " </td> <td Class='text4' style='color: #e69a20' >" .$row['2'].
+                 echo " <tr><td  Class='text4' style='color: #e69a20'> [ ".$row['0']. " ]  </td> <td Class='text4' style='color: #e69a20' >" .$row['1']. " </td> <td Class='text4' style='color: #e69a20' >" .$row['2'].
             "</td> <td Class='text4' style='color: #e69a20' >".$row['3']."</td> <td Class='text4' style='color: #e69a20' > ".$row['4']."</td> <td Class='text4' style='color: #e69a20' > ".$row['5']."</td><td Class='text4' style='color: #e69a20' > ".$row['6']. "</td></tr>";
                }
               if($row['6']=='Cancel'){
@@ -196,7 +175,6 @@ button{
        $conn=null; 
       ?>
             </table>
-            <hr>     
   <div style="color:#a9bfec"></div>
   </div>
 </body>

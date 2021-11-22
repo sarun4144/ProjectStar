@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2021 at 09:52 AM
+-- Generation Time: Nov 22, 2021 at 02:05 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.4.20
 
@@ -39,8 +39,8 @@ CREATE TABLE `catagory` (
 INSERT INTO `catagory` (`Id_Category`, `Name`) VALUES
 (1, 'Armor'),
 (2, 'Weapon'),
-(3, 'Vehicle '),
-(4, 'Accessories'),
+(3, 'Accessories'),
+(4, 'Vehicle '),
 (5, 'Consumable'),
 (6, 'Crafting materials');
 
@@ -351,13 +351,13 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `Id_Log` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `market`
 --
 ALTER TABLE `market`
-  MODIFY `Id_Order` int(200) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_Order` int(200) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `rarity`
