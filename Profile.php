@@ -104,6 +104,12 @@ button{
                 unset($_SESSION["ItemError"]);
             }
           ?>
+          <?php
+            if(isset($_SESSION["ItemSold"])){
+                echo "<script> alert('Buy success!'); </script>";
+                unset($_SESSION["ItemSold"]);
+            }
+          ?>
           <?php 
             if(isset($_SESSION["ItemSell"])){
                 echo "<script>alert('Item Sell!');</script>";
@@ -232,14 +238,7 @@ button{
                                                         </button>
                                                     </div>
                                                 </a>";
-                            }else
-                            echo "<a href='buyitem.php?item_id=$row[0]'>
-                                                    <div class='text-end me-3'>
-                                                        <button class='btn btn-secondary text-white fw-bold mt-2'  data-bs-target='#cancel' data-bs-toggle='modal'>
-                                                            Detail
-                                                        </button>
-                                                    </div>
-                                                </a>";
+                            }
                             echo "</div></div>";    
                         }
                         $conn=null;
