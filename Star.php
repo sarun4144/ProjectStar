@@ -46,7 +46,7 @@
 </head>
 <body>
 <div class="ms-4 me-4"> 
-  <?php include 'navbar-login.php';?>
+  <?php include 'navbar.php';?>
 </div>
 <button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 <div id="stars2"></div>
