@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="categories.css">
 <link rel="stylesheet" href="Card1.css">
 <body style="background-color: #222;">
+
 <?php
     if(isset($_GET['name'])){
         if($_GET['name']=='All'){
@@ -23,7 +24,10 @@
     }else{
         $name = "For Sale";
     }
-?>
+?><div class="">
+    <button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
+</div>
+
 <div class="ms-3 me-3 sticky-top">
 <?php 
     session_start();
@@ -50,109 +54,8 @@
             <li><label for="Legendary" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Legendary" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Legendary</label></li>
         </ul>
     </div>
-    <h3>Status</h3>
-    <div class="checklist categories">
-      	<ul>
-			<li><label for="Attack-i" onclick="showDiv('hidden-a')" style="cursor: pointer;" class=" text-white"><input id="Attack-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-a')">Attack</label></li>
-            <div id="hidden-a" style="display: none;">
-                <div class="filter level-filter level-req">
-                    <div id="attack" class="range-slider">
-                        <div class="number-group">
-                            <input class="number-input" type="number" value="1" min="0" max="100"> to 
-                            <input class="number-input" type="number" value="100" min="0" max="100">
-                        </div>
-                        <div class="range-group">
-                            <input class="range-input" value="1" min="1" max="100" step="1" type="range">
-                            <input class="range-input" value="100" min="1" max="100" step="1" type="range">
-                        </div>
-                    </div>
-                </div>
-                <script src="slider.js"></script>
-            </div>
-        	<li><label for="Defence-i" onclick="showDiv('hidden-d')" style="cursor: pointer;" class=" text-white"><input type="checkbox" id="Defence-i" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-d')">Defence</label></li>
-            <div id="hidden-d" style="display: none;">
-                <div class="filter level-filter level-req">
-                    <div id="defence" class="range-slider">
-                        <div class="number-group">
-                            <input class="number-input" type="number" value="1" min="0" max="100"> to 
-                            <input class="number-input" type="number" value="100" min="0" max="100">
-                        </div>
-                        <div class="range-group">
-                            <input class="range-input" value="1" min="1" max="100" step="1" type="range">
-                            <input class="range-input" value="100" min="1" max="100" step="1" type="range">
-                        </div>
-                    </div>
-                </div>
-                <script src="slider.js"></script>
-            </div>
-            <li><label for="Vitality-i" onclick="showDiv('hidden-v')" style="cursor: pointer;" class=" text-white"><input id="Vitality-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-v')">Vitality</label></li>
-            <div id="hidden-v" style="display: none;">
-                <div class="filter level-filter level-req">
-                    <div id="vitality" class="range-slider">
-                        <div class="number-group">
-                            <input class="number-input" type="number" value="1" min="0" max="100"> to 
-                            <input class="number-input" type="number" value="100" min="0" max="100">
-                        </div>
-                        <div class="range-group">
-                            <input class="range-input" value="1" min="1" max="100" step="1" type="range">
-                            <input class="range-input" value="100" min="1" max="100" step="1" type="range">
-                        </div>
-                    </div>
-                </div>
-                <script src="slider.js"></script>
-            </div>
-            <li><label for="Charisma-i" onclick="showDiv('hidden-c')" style="cursor: pointer;" class=" text-white"><input id="Charisma-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-c')">Charisma</label></li>
-            <div id="hidden-c" style="display: none;">
-                <div class="filter level-filter level-req">
-                    <div id="charisma" class="range-slider">
-                        <div class="number-group">
-                            <input class="number-input" type="number" value="1" min="0" max="100"> to 
-                            <input class="number-input" type="number" value="100" min="0" max="100">
-                        </div>
-                        <div class="range-group">
-                            <input class="range-input" value="1" min="1" max="100" step="1" type="range">
-                            <input class="range-input" value="100" min="1" max="100" step="1" type="range">
-                        </div>
-                    </div>
-                </div>
-                <script src="slider.js"></script>
-            </div>
-            <li><label for="Agility-i" onclick="showDiv('hidden-ag')" style="cursor: pointer;" class=" text-white"><input id="Agility-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-ag')">Agility</label></li>
-            <div id="hidden-ag" style="display: none;">
-                <div class="filter level-filter level-req">
-                    <div id="agility" class="range-slider">
-                        <div class="number-group">
-                            <input class="number-input" type="number" value="1" min="0" max="100"> to 
-                            <input class="number-input" type="number" value="100" min="0" max="100">
-                        </div>
-                        <div class="range-group">
-                            <input class="range-input" value="1" min="1" max="100" step="1" type="range">
-                            <input class="range-input" value="100" min="1" max="100" step="1" type="range">
-                        </div>
-                    </div>
-                </div>
-                <script src="slider.js"></script>
-            </div>
-            <li><label for="Talent-i" onclick="showDiv('hidden-t')" style="cursor: pointer;" class=" text-white"><input id="Talent-i" type="checkbox" style="margin-left: -20px; margin-right: 8px;" onclick="showDiv('hidden-t')">Talent</label></li>
-            <div id="hidden-t" style="display: none;">
-                <div class="filter level-filter level-req">
-                    <div id="talent" class="range-slider">
-                        <div class="number-group">
-                            <input class="number-input" type="number" value="1" min="0" max="100"> to 
-                            <input class="number-input" type="number" value="100" min="0" max="100">
-                        </div>
-                        <div class="range-group">
-                            <input class="range-input" value="1" min="1" max="100" step="1" type="range">
-                            <input class="range-input" value="100" min="1" max="100" step="1" type="range">
-                        </div>
-                    </div>
-                </div>
-                <script src="slider.js"></script>
-            </div>
-        </ul>
-    </div>
 </div>
-</div>
+
 <div class="dropdown">
                 <button type="button" class="btn text-white fw-bold dropdown-toggle ms-3" style="background-color:#E95589" 
                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $name ?></button>
@@ -162,6 +65,7 @@
                         <li><a class="dropdown-item" href="marketplace.php?name=Notsell">Not For Sale</a></li>
                   </ul>
 </div>
+</div>  
                         <div class="wrap container">
                             <?php
                             $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
@@ -201,9 +105,19 @@
                                     }
                                     $conn=null;
                             ?>
-                        </div>
+                        </div>          
 </body>
+
     <script>
+        var button = document.getElementById("myBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 25|| document.documentElement.scrollTop >25) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        }
         function showDiv(Div) {
             var x = document.getElementById(Div);
             if(x.style.display=="none") {
@@ -212,5 +126,8 @@
                 x.style.display = "none";
             }
         }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
-    
