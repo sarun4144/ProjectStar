@@ -40,11 +40,13 @@
 #myBtn:hover {
   background-image: linear-gradient(to bottom, #614385 30%, #516395  100%)
 }
+
+
 </style>
 </head>
 <body>
 <div class="ms-4 me-4"> 
-  <?php include 'navbar.php';?>
+  <?php include 'navbar-login.php';?>
 </div>
 <button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 <div id="stars2"></div>
@@ -95,7 +97,6 @@
       </div>
     </div>
   </div>
-
   <div class="card" style="width: 100%;height:30em;"id="myP3">
   <div class="card-body">
     <div class="Ani4"><img src="Credit.png" width="350px" id="myP4" "> </div>
@@ -124,18 +125,21 @@
 <script>
 var button = document.getElementById("myBtn");
 var Scroll = document.getElementById("Scroll");
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function() {
+  scrollFunction()};
 function scrollFunction() {
   if (document.body.scrollTop > 25|| document.documentElement.scrollTop >25) {
     button.style.display = "block";
   } else {
     button.style.display = "none";
   }
+    // --------------------------------------------------------------//
   if (document.body.scrollTop > 25|| document.documentElement.scrollTop >25) {
     Scroll.style.visibility = "hidden";
   } else {
     Scroll.style.visibility = "visible";
   }
+
   if (document.body.scrollTop > 26 || document.documentElement.scrollTop > 26) {
     document.getElementById("myP").className = "showup";
   } else {
