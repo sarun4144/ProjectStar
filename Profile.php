@@ -168,7 +168,7 @@ button{
                                 <form method="POST" action="syncitem.php">
                                     <div class="form-group">
                                         <label>ID Item</label>
-                                        <input type="text" name="item_id" class="form-control mt-2 required">
+                                        <input type="text" name="item_id" class="form-control mt-2 " required>
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -195,9 +195,9 @@ button{
                                 <form method="POST" action="sellitem.php">
                                     <div class="form-group">
                                         <label>ID Item</label>
-                                        <input type="text" name="item_id" class="form-control mt-2 required">
+                                        <input type="text" name="item_id" class="form-control mt-2 " required>
                                         <label class="mt-3">Price (Gem)</label>
-                                        <input type="text" name="price_gem" class="form-control mt-2 required">
+                                        <input type="text" name="price_gem" class="form-control mt-2 " required>
                                     </div>
                             </div>
                             <div class="modal-footer">
@@ -215,11 +215,6 @@ button{
                         $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
                         $sql="SELECT * FROM item WHERE User_Id = $_SESSION[UserID] ";
                         $result =  $conn -> query($sql);
-
-                        $sql1="SELECT * FROM market ";
-                        $result1 =  $conn -> query($sql1);
-                        $row1=$result1->fetch();
-                        $price_gem = $row1[1];
                         
                         while($row=$result->fetch()){
                             $hos=$row[10];
@@ -232,7 +227,7 @@ button{
                             if($hos==='S'){
                             echo "<a href='buyitem.php?item_id=$row[0]'>
                                                     <div class='text-end me-3'>
-                                                        <button class='btn btn-danger text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>
+                                                        <button class='btn btn-danger text-white fw-bold mt-2' data-bs-target='#cancel' data-bs-toggle='modal'>
                                                             Cancel
                                                         </button>
                                                     </div>
@@ -240,7 +235,7 @@ button{
                             }else
                             echo "<a href='buyitem.php?item_id=$row[0]'>
                                                     <div class='text-end me-3'>
-                                                        <button class='btn btn-secondary text-white fw-bold mt-2' '  data-bs-target='#cancel' data-bs-toggle='modal'>
+                                                        <button class='btn btn-secondary text-white fw-bold mt-2'  data-bs-target='#cancel' data-bs-toggle='modal'>
                                                             Detail
                                                         </button>
                                                     </div>
@@ -250,14 +245,8 @@ button{
                         $conn=null;
 
                     ?>
-                 <!-- ITEM 2 -->
-
             </div>
-
-        <!-- item-->
         </div>
-        
-        
       </div>
   </div>
   

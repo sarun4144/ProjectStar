@@ -6,6 +6,10 @@
 // market delete 1
 
     session_start();
+    if(!isset($_SESSION["Username"])){
+        header("location:login.php");
+        die();
+    }
     $item_id=$_GET['item_id'];
     $user=$_SESSION["UserID"];
     $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
@@ -25,11 +29,8 @@
     $result3 =  $conn -> query($sql3);
     $row3=$result3->fetch();
     $price_gem = $row3[1];
-
-    echo 'here1';
     while($row=$result->fetch()){
-        echo 'here2';
-        if($user!=$row[2] || $buyer_gem > $row[5]){
+        if($user!=$row[2] && $buyer_gem  >= $row[5]){
             $sql = "INSERT INTO log (Price,User_Id_Seller,Item_Id,User_Id_Buyer,State) VALUES ('$row[3]','$row[2]','$item_id','$user','Sold')";
             $conn->exec($sql);
 
@@ -48,9 +49,8 @@
             $_SESSION["ItemSold"] = 1;
             header("location:buyitem.php?item_id=".$item_id);
             die();
-        }
-        else{
-            $_SESSION["SoldError"] = 1;
+        }else if($buyer_gem  < $row[5]){
+            $_SESSION["ItemSoldError"] = 1;
             header("location:buyitem.php?item_id=".$item_id);
             die();
         }

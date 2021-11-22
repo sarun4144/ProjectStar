@@ -68,12 +68,12 @@
                             $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
                             if(isset($_GET['name'])) {
                                 if($_GET['name']=='Notsell'){
-                                    $sql="SELECT * FROM item where Hold_or_Sell = 'H' and Category_Id = $_GET[cat]";
+                                    $sql="SELECT * FROM item where Hold_or_Sell = 'H'";
                                 }else if($_GET['name']=='All'){
                                     $sql="SELECT * FROM item";
+                                }else if($_GET['name']=='Forsell'){
+                                    $sql="SELECT * FROM item where Hold_or_Sell = 'S'";
                                 }
-                            }else{
-                                $sql="SELECT * FROM item where Hold_or_Sell = 'S'and Category_Id = $_GET[cat]";
                             }
                             
                             $result =  $conn -> query($sql);

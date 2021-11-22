@@ -14,6 +14,8 @@
             $result1=$conn->query($sql1);
             $sql="INSERT INTO log (Price,User_Id_Seller,Item_Id,State) VALUES ('$price_gem','$user','$item_id','Cancel')";
             $conn->exec($sql);
+            $sql="DELETE FROM market where Item_Id = '$item_id'";
+            $conn->exec($sql);
             $_SESSION["ItemCancel"] = 1;
             header("location:Profile.php");
             die();

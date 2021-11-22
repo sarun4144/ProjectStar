@@ -87,20 +87,17 @@ button{
         <?php 
         session_start();
         include 'navbar.php';
-        if(!isset($_SESSION["Username"])){
-            header("location:login.php");
-            die();
-        }
+
         ?>
 
       <?php 
+            if(isset($_SESSION["ItemSoldError"])){
+              echo "<script> alert('You can not by your own item OR Not enough gem'); </script>";
+              unset($_SESSION["ItemSoldError"]);
+            }
             if(isset($_SESSION["ItemSold"])){
                 echo "<script> alert('Buy success!'); </script>";
                 unset($_SESSION["ItemSold"]);
-            }
-            if(isset($_SESSION["SoldError"])){
-                echo "<script> alert('You can't by your own item OR Not enough gem'); </script>";
-                unset($_SESSION["SoldError"]);
             }
           ?>
 
@@ -111,8 +108,11 @@ button{
             <div class="conatiner">
               <div class="row">
                     <?php
+                        $user = 0;
                         $item_id=$_GET['item_id'];
-                        $user=$_SESSION["UserID"];
+                        if(isset($_SESSION["Username"])){
+                          $user=$_SESSION["UserID"];
+                      }
                         $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
                         $sql="SELECT t1.Id_Item,t1.Name,t1.Atk,t1.Def,t1.Int,t1.Vit,t1.Cha,t1.Agi,t1.Tal,t1.Img,t1.Hold_Or_Sell,t2.Name,t3.Name,t4.Username,t4.ID
                         FROM item AS t1 INNER JOIN catagory AS t2 ON (t1.Category_Id=t2.Id_Category) 
@@ -162,8 +162,7 @@ button{
                                                 </button>
                                             </div>
                                         </a>";
-                            }
-                            if($hos==='S' && $user === $row[14]){
+                            }else if($hos==='S' && $user === $row[14]){
                               $row=$result1->fetch();
                                   echo "<a href='cancelsell.php?item_id=$item_id'>
                                           <div class='text-end me-3'>
