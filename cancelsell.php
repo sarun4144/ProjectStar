@@ -7,6 +7,7 @@
     $result =  $conn -> query($sql);
     $sql1="SELECT * FROM item WHERE Id_Item = '$item_id'";
     $result1 =  $conn -> query($sql);
+    echo $item_id;
     while($row=$result->fetch()){
         if($row[13]===$user){
             $sql1="UPDATE item SET Hold_or_Sell = 'H' WHERE Id_Item = '$item_id'";
