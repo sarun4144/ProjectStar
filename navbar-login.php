@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="BG.css">
+
 <style>
     @import url("https://fonts.googleapis.com/css?family=Lato:300");
     a.White:visited {
@@ -17,7 +17,7 @@
       <a href="Star.php"><img src="Logo.png" width="auto" height="60px"></a>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a href="Log.php" class="White nav-link px-2 fw-bolder" title="DashBoard"><i class="bi bi-window me-2"></i>Dashboard</a></li>
-        <li><a href="marketplace.php" class="White nav-link px-2 fw-bolder" title="Market"><i class="bi bi-shop-window me-2"></i>Market</a></li>
+        <li><a href="marketplace.php?name=All" class="White nav-link px-2 fw-bolder" title="Market"><i class="bi bi-shop-window me-2"></i>Market</a></li>
       </ul>
       <a href="login.php">
         <div div class="text-end">
@@ -32,7 +32,7 @@
       <a href="Star.php"><img src="Logo.png" width="auto" height="60px"></a>
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
         <li><a href="Log.php" class="White nav-link px-2 fw-bolder" title="DashBoard"><i class="bi bi-window me-2"></i>Dashboard</a></li>
-        <li><a href="marketplace.php" class="White nav-link px-2 fw-bolder" title="Market"><i class="bi bi-shop-window me-2"></i>Market</a></li>
+        <li><a href="marketplace.php?name=All" class="White nav-link px-2 fw-bolder" title="Market"><i class="bi bi-shop-window me-2"></i>Market</a></li>
       </ul>
       <form class="col-12 text-center col-lg-auto mb-3 mb-lg-0 me-lg-3 text-info">
       <button type="button" class="btn text-white fw-bold" style="background-color:#E95589">
@@ -41,7 +41,7 @@
               $sql="SELECT * FROM user WHERE Username='$_SESSION[Username]'";
               $result=$conn->query($sql);
               while($row=$result->fetch()){
-                echo $row['Gem']."💎";
+                echo $row['Gem']." 💎";
               }
               $conn=null;
             ?>

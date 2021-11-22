@@ -21,47 +21,44 @@
         }else if($_GET['name']=='Forsell'){
             $name = "For Sale";
         }
-    }else{
-        $name = "For Sale";
     }
-?><div class="">
-    <button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
-</div>
-
+?>
+<button style="border-radius: 70%; opacity: 0.7;" onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 <div class="ms-3 me-3 sticky-top">
+
 <?php 
     session_start();
     include 'navbar-login.php';?>
     <br>
+    
 <div id="sidebar" class="sider" style="margin-left: -5px;">
     <h3>CATEGORIES</h3>
     <div class="checklist categories">
       	<ul>
-			<li><label for="Armor" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Armor" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Armor</label></li>
-        	<li><label for="Weapon" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Weapon" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Weapon</label></li>
-            <li><label for="Vehicle" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Vehicle" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Vehicle</label></li>
-            <li><label for="Accensories" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Accensories" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Accensories</label></li>
-            <li><label for="Consumable" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Consumable" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Consumable</label></li>
-            <li><label for="Crafting Materials" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Crafting Materials" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Crafting Materials</label></li>
+			<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Armor" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Armor</label></li>
+        	<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Weapon" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Weapon</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Vehicle" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Vehicle</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Accensories" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Accensories</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Consumable" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Consumable</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Crafting Materials" style="margin-left: -20px; margin-right: 8px;" onclick="check()"><img src="" width="15px" height="">&nbsp;Crafting Materials</label></li>
         </ul>
     </div>
     <h3>Rarelity</h3>
     <div class="checklist categories">
       	<ul>
-			<li><label for="Common" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Common" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Common</label></li>
-        	<li><label for="Rare" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Rare" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Rare</label></li>
-            <li><label for="Epic" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Epic" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Epic</label></li>
-            <li><label for="Legendary" style="color: #fff; cursor:pointer;"><input type="checkbox" id="Legendary" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Legendary</label></li>
+			<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Common" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Common</label></li>
+        	<li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Rare" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Rare</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Epic" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Epic</label></li>
+            <li><label style="color: #fff; cursor:pointer;"><input type="checkbox" id="Legendary" style="margin-left: -20px; margin-right: 8px;"><img src="" width="15px" height="">&nbsp;Legendary</label></li>
         </ul>
     </div>
 </div>
-
 <div class="dropdown">
                 <button type="button" class="btn text-white fw-bold dropdown-toggle ms-3" style="background-color:#E95589" 
                 id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $name ?></button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="marketplace.php?name=All">All</a></li>
-                        <li><a class="dropdown-item" href="marketplace.php">For Sale</a></li>
+                        <li><a class="dropdown-item" href="marketplace.php?name=Forsell">For Sale</a></li>
                         <li><a class="dropdown-item" href="marketplace.php?name=Notsell">Not For Sale</a></li>
                   </ul>
 </div>
@@ -71,15 +68,16 @@
                             $conn=new PDO("mysql:host=localhost;dbname=spaceutopia;charset=utf8","root","");
                             if(isset($_GET['name'])) {
                                 if($_GET['name']=='Notsell'){
-                                    $sql="SELECT * FROM item where Hold_or_Sell = 'H'";
+                                    $sql="SELECT * FROM item where Hold_or_Sell = 'H' and Category_Id = $_GET[cat]";
                                 }else if($_GET['name']=='All'){
                                     $sql="SELECT * FROM item";
                                 }
                             }else{
-                                $sql="SELECT * FROM item where Hold_or_Sell = 'S'";
+                                $sql="SELECT * FROM item where Hold_or_Sell = 'S'and Category_Id = $_GET[cat]";
                             }
+                            
                             $result =  $conn -> query($sql);
-                            $sql1="SELECT * FROM market ";                 
+                            $sql1="SELECT * FROM market";          
                             $result1 =  $conn -> query($sql1);
                                 while($row=$result->fetch()){
                                     $hos=$row[10];                     
@@ -130,4 +128,30 @@
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
         }
+        function check(response, urlPath){
+            if(document.getElementById('Armor').checked){
+                let updateurt = window.location.href + "&cat=1";
+                window.history.pushState('', '', updateurt);
+            }
+            if(document.getElementById('Weapon').checked){
+                let updateurt = window.location.href + "&cat=2";
+                window.history.pushState('', '', updateurt);
+            }
+            if(document.getElementById('Vehicle').checked){
+                let updateurt = window.location.href + "&cat=3";
+                window.history.pushState('', '', updateurt);
+            }
+            if(document.getElementById('Accensories').checked){
+                let updateurt = window.location.href + "&cat=4";
+                window.history.pushState('', '', updateurt);
+            }
+            if(document.getElementById('Consumable').checked){
+                let updateurt = window.location.href + "&cat=5";
+                window.history.pushState('', '', updateurt);
+            }
+            if(document.getElementById('Crafting Materials').checked){
+                let updateurt = window.location.href + "&cat=6";
+                window.history.pushState('', '', updateurt);
+            }
+        }    
     </script>
