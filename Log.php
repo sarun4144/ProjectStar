@@ -1,9 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION["Username"])){
-        header("location:login.php");
-        die();
-    }
+  
     
 ?>
 <!DOCTYPE html>
@@ -62,6 +59,7 @@ button{
 	 background-position: 0 50%;
 	 border-radius: calc(2 * var(--border-width));
 	 animation: moveGradient 4s alternate infinite;
+   
 }
 @keyframes moveGradient {
 	 50% {
@@ -117,7 +115,21 @@ button{
           ?>
 
       <div class="gradient-border mt-5 ">
+      <?php 
+  if(!isset($_SESSION["id"])){
+?>
         <table class="center">  
+          <tr>
+            <td colspan="2">
+              <div class="align-items-center"><img src="User-icon.png" alt="profile" class="headshot-2 wide-100px mt-3" ></div>
+            </td>
+          </tr>
+
+        </table>
+        <?php
+  }else{
+  ?>
+  <table class="center">  
           <tr>
             <td colspan="2">
               <div class="align-items-center"><img src="User-icon.png" alt="profile" class="headshot-2 wide-100px mt-3" ></div>
@@ -139,7 +151,10 @@ button{
               </div>
             </td>
           </tr>
-        </table>
+        </table>  
+        <?php 
+      }
+    ?>
         <br>  
    <table class=" table table-striped"style="width:100%">
         <?php
@@ -180,7 +195,8 @@ button{
        } 
        $conn=null; 
       ?>
-            </table>      
+            </table>
+            <hr>     
   <div style="color:#a9bfec"></div>
   </div>
 </body>
